@@ -12,6 +12,8 @@
  *   info.txt   — line 1: title to show instead of the folder name
  *                lines 2+: a short description shown on the event page
  *
+ * archive/order.txt — optional: folder names, one per line, to pin events to the top.
+ *
  * Generates archive/index.html and one archive/<event>.html per folder.
  * No dependencies — plain Node.
  */
@@ -70,8 +72,17 @@ function loadEvents() {
       };
     })
     .filter(Boolean)
-    .sort((a, b) => b.sort.localeCompare(a.sort) || natural(a.title, b.title));
+    .sort((a, b) => rank(a) - rank(b) || b.sort.localeCompare(a.sort) || natural(a.title, b.title));
 }
+
+// archive/order.txt — one folder name per line; listed events show first, in that order.
+// Anything not listed follows, newest date first, then A–Z.
+const ORDER = (() => {
+  const f = path.join(ARCHIVE, 'order.txt');
+  if (!fs.existsSync(f)) return [];
+  return fs.readFileSync(f, 'utf8').split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => l.toLowerCase());
+})();
+function rank(e) { const i = ORDER.indexOf(e.folder.toLowerCase()); return i === -1 ? ORDER.length : i; }
 
 const CSS = `
 :root{--blue:#1d3f6e;--blue-mid:#2a5298;--blue-pale:#f0f6fd;--gold:#c8a84b;--text:#1a2533;--text-mid:#344a63;--text-muted:#637d99;--border-light:#e3edf8;--bg:#fafbfd;--card:#fff}

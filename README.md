@@ -13,7 +13,8 @@
    `2025-12-06 Miklavz`, `2025-11 Grape Harvest`, `2024 Christmas Party`.
 3. Optional: name one photo `cover.jpg` to choose the event's tile image, and add an
    `info.txt` (line 1 = title to display, next lines = short description).
-4. Commit and push. Netlify rebuilds the archive automatically (about a minute).
+4. To pin events to the top of the archive, list their folder names in `archive/order.txt`.
+5. Commit and push. Netlify rebuilds the archive automatically (about a minute).
 
 To preview locally: `node build-archive.js`, then open `archive/index.html`.
 The generated `archive/*.html` files are not committed (see `.gitignore`).
