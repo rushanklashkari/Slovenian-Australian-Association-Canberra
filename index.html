@@ -6144,6 +6144,12 @@ document.addEventListener('DOMContentLoaded', function() {
   border: 2px solid white;
 }
 #ana-btn:hover #ana-avatar { transform: scale(1.08); }
+.ana-label-short { display: none; }
+@media(max-width:600px) {
+  .ana-label-long { display: none; }
+  .ana-label-short { display: inline; }
+  #ana-avatar { width: 54px; height: 54px; }
+}
 #ana-label {
   margin-top: 6px;
   background: #003DA5;
@@ -6316,7 +6322,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Ana floating button -->
 <div id="ana-btn" onclick="toggleAna()">
   <div id="ana-avatar">👩</div>
-  <div id="ana-label">Hi, I am Ana — ask me anything about the club!</div>
+  <div id="ana-label"><span class="ana-label-long">Hi, I am Ana — ask me anything about the club!</span><span class="ana-label-short">Ask Ana</span></div>
 </div>
 
 <!-- Ana chat window -->
@@ -6355,6 +6361,7 @@ document.addEventListener('DOMContentLoaded', function() {
 var currentLang = 'en';
 
 var slTranslations = {
+  'Ask Ana': 'Vprašaj Ano',
   'Photo Archive': 'Foto arhiv',
   'Browse Our Photo Archive →': 'Prebrskajte naš foto arhiv →',
   'Let us know if you’re coming!': 'Sporočite nam, če pridete!',
@@ -7909,7 +7916,8 @@ function anaGetReplySL(q) {
 #music-vinyl.playing { animation-play-state: running; }
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 @media(max-width:480px) {
-  #music-player { bottom:16px; left:12px; }
+  #music-player { bottom:16px; left:12px; min-width:0; max-width:calc(100vw - 124px); padding:8px 10px; gap:8px; }
+  #music-cover { width:34px; height:34px; }
 }
 </style>
 
