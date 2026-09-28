@@ -1037,11 +1037,11 @@ body.lang-sl span.nl-lang-en { display: none !important; }
       <!-- Direct stream audio player - no third-party restrictions -->
       <div style="max-width:500px;margin:0 auto">
         <div style="background:var(--blue-pale);border:1px solid var(--border-light);border-radius:16px;padding:24px;text-align:center">
-          <audio id="radio-player" controls preload="none"
+          <audio id="radio-player" controls preload="none" src="https://mp3.rtvslo.si/prvi"
             style="width:100%;border-radius:8px;outline:none;margin-bottom:8px">
-            <source id="radio-source" src="https://mp3.rtvslo.si/prvi" type="audio/aac">
             Your browser does not support audio streaming.
           </audio>
+          <p id="radio-error" style="display:none;font-size:13px;color:var(--text-mid);background:#fff8e6;border-radius:8px;padding:8px 12px;margin:6px 0"></p>
           <p id="radio-now-playing" style="font-size:13px;color:var(--blue);font-weight:600;margin:4px 0 0">
             RTV Slovenija Radio 1 — News &amp; Culture
           </p>
@@ -5937,26 +5937,43 @@ function goToResult(page) {
 
 // ── RADIO ─────────────────────────────────────────────────────────────────
 var radioStations = [
-  { src: 'https://mp3.rtvslo.si/prvi',                          label: 'RTV Slovenija Radio 1 — News & Culture' },
-  { src: 'https://mp3.rtvslo.si/val202',                        label: 'Val 202 — Pop & Music' },
-  { src: 'https://radio.ognjisce.si/ognjisce/iradio/live.m3u', label: 'Radio Ognjišče — Community & Faith' },
-  { src: 'https://mp3.rtvslo.si/ars',                           label: 'Radio ARS — Classical & Culture' }
+  { src: 'https://mp3.rtvslo.si/prvi', label: 'RTV Slovenija Radio 1 — News & Culture', site: 'https://www.rtvslo.si/radio/prvi' },
+  { src: 'https://mp3.rtvslo.si/val202', label: 'Val 202 — Pop & Music', site: 'https://www.rtvslo.si/radio/val202' },
+  { src: 'https://live.ognjisce.si/ognjisce.mp3', label: 'Radio Ognjišče — Community & Faith', site: 'https://radio.ognjisce.si/' },
+  { src: 'https://mp3.rtvslo.si/ars', label: 'Radio ARS — Classical & Culture', site: 'https://www.rtvslo.si/radio/ars' }
 ];
 
+var radioIdx = 0;
 function switchStation(idx) {
   var player = document.getElementById('radio-player');
-  var source = document.getElementById('radio-source');
-  var label  = document.getElementById('radio-now-playing');
-  if (!player || !source) return;
+  var label = document.getElementById('radio-now-playing');
+  var err = document.getElementById('radio-error');
+  if (!player) return;
   var wasPlaying = !player.paused;
-  source.src = radioStations[idx].src;
+  radioIdx = idx;
+  if (err) err.style.display = 'none';
+  player.src = radioStations[idx].src;
   if (label) label.textContent = radioStations[idx].label;
   player.load();
-  if (wasPlaying) player.play();
+  if (wasPlaying) { var p = player.play(); if (p && p.catch) p.catch(function(){}); }
   document.querySelectorAll('.radio-stn-btn').forEach(function(b, i) {
     b.classList.toggle('active', i === idx);
   });
 }
+document.addEventListener('DOMContentLoaded', function() {
+  var player = document.getElementById('radio-player');
+  if (!player) return;
+  player.addEventListener('error', function() {
+    var err = document.getElementById('radio-error');
+    if (!err) return;
+    var s = radioStations[radioIdx];
+    err.innerHTML = 'This station can’t play here right now. <a href="' + s.site + '" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Listen on the station’s website ↗</a>';
+    err.style.display = 'block';
+  });
+  player.addEventListener('playing', function() {
+    var err = document.getElementById('radio-error'); if (err) err.style.display = 'none';
+  });
+});
 
 // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
 function initReveal() {
