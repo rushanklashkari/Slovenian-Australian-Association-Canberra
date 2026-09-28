@@ -1025,10 +1025,6 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <div><div class="stn-name">Val 202</div><div class="stn-genre">Pop &amp; Music</div></div>
         </button>
         <button class="radio-stn-btn" onclick="switchStation(2)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.89 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.11-.89-2-2-2H5.72l8.96-3.58L13.98 1 3.24 6.15zM12 18c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
-          <div><div class="stn-name">Radio Ognjišče</div><div class="stn-genre">Community &amp; Faith</div></div>
-        </button>
-        <button class="radio-stn-btn" onclick="switchStation(3)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
           <div><div class="stn-name">Radio ARS</div><div class="stn-genre">Classical &amp; Culture</div></div>
         </button>
@@ -1986,7 +1982,7 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <span style="font-size:32px;flex-shrink:0">🎵</span>
           <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--blue);margin:4px 0 0">Explore Slovenian Music – Feel the Rhythm of Slovenia</h2>
         </div>
-        <p style="font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:12px">Slovenian music is as diverse as the country itself, from folk tunes to modern beats. Discover the soul of Slovenia through music that reflects its culture and history. Tune into Slovenian radio stations, explore playlists, and experience the sounds that connect generations.</p><p style="font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:8px">Or listen live right here on our website — we have RTV Slovenija, Val 202, Radio Ognjišče, and Radio ARS streaming directly:</p><p style="margin-bottom:0"><button onclick="showPage('home')" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:white;border:none;border-radius:8px;padding:9px 18px;font-size:14px;font-family:inherit;cursor:pointer;font-weight:600">🎙️ Listen to Slovenian Radio on Our Site</button></p>
+        <p style="font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:12px">Slovenian music is as diverse as the country itself, from folk tunes to modern beats. Discover the soul of Slovenia through music that reflects its culture and history. Tune into Slovenian radio stations, explore playlists, and experience the sounds that connect generations.</p><p style="font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:8px">Or listen live right here on our website — we have RTV Slovenija Radio 1, Val 202 and Radio ARS streaming directly:</p><p style="margin-bottom:0"><button onclick="showPage('home')" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:white;border:none;border-radius:8px;padding:9px 18px;font-size:14px;font-family:inherit;cursor:pointer;font-weight:600">🎙️ Listen to Slovenian Radio on Our Site</button></p>
       </div>
 
       
@@ -5939,7 +5935,6 @@ function goToResult(page) {
 var radioStations = [
   { src: 'https://mp3.rtvslo.si/prvi', label: 'RTV Slovenija Radio 1 — News & Culture', site: 'https://www.rtvslo.si/radio/prvi' },
   { src: 'https://mp3.rtvslo.si/val202', label: 'Val 202 — Pop & Music', site: 'https://www.rtvslo.si/radio/val202' },
-  { src: 'https://live.ognjisce.si/ognjisce.mp3', label: 'Radio Ognjišče — Community & Faith', site: 'https://radio.ognjisce.si/' },
   { src: 'https://mp3.rtvslo.si/ars', label: 'Radio ARS — Classical & Culture', site: 'https://www.rtvslo.si/radio/ars' }
 ];
 
@@ -6704,7 +6699,7 @@ var slTranslations = {
   'Not at all! We welcome everyone who has an interest in Slovenian culture, heritage, or community. Wh': 'Sploh ne! Vabimo vsakogar, ki ga zanima slovenska kultura, dediščina ali skupnost. Ne glede na to, ali ste slovenskega porekla ali ne — vsi so dobrodošli.',
   'Volunteering is a fantastic way to give back to the community and meet fellow members! We have oppor': 'Prostovoljstvo je fantastičen način vračanja skupnosti in spoznavanja novih članov! Imamo priložnosti za delo na prireditvah, vzdrževanje, vrtnarjenje, pisarniško podporo in še veliko več.',
   'Absolutely! The Slovenian Australian Association of Canberra offers Slovenian language classes every': 'Seveda! Slovensko-avstralska zveza Canberra ponuja tečaje slovenščine vsako sredo zvečer v klubu. Obiščite stran Učite se slovenščine za informacije o tečajih.',
-  'You can listen to Slovenian radio right here on our website! We stream RTV Slovenija Radio 1, Val 2': 'Poslušate lahko slovenski radio tukaj na naši spletni strani! Pretakamo RTV Slovenija Radio 1, Val 202, Radio Ognjišče in Radio ARS živo iz Slovenije. Prav tako priporočamo VOSA Radio vsako soboto od 8 do 10 na 89.3 FM.',
+  'You can listen to Slovenian radio right here on our website! We stream RTV Slovenija Radio 1, Val 2': 'Poslušate lahko slovenski radio tukaj na naši spletni strani! Pretakamo RTV Slovenija Radio 1, Val 202 in Radio ARS živo iz Slovenije. Prav tako priporočamo VOSA Radio vsako soboto od 8 do 10 na 89.3 FM.',
   'The Wall of Kindness is a beautiful tradition at the Slovenian Australian Association of Canberra.': 'Zid dobrote je lepa tradicija v Slovensko-avstralski zvezi Canberra.',
   'We host a variety of cultural and social events throughout the year! Our regular gatherings are:': 'Skozi vse leto organiziramo vrsto kulturnih in socialnih prireditev! Naša redna srečanja so:',
   'We\'re more than a club — we\'re a community, a home away from home where Slovenian heritage': 'Smo več kot klub — smo skupnost, dom daleč od doma, kjer slovensko dediščino',
@@ -6823,7 +6818,7 @@ var slTranslations = {
   'The Slovenian-Australian Association Canberra Inc — connecting the Slovenian community in': 'Slovensko-avstralska zveza Canberra Inc — povezuje slovensko skupnost',
   'Birthday? Celebration? Get together? Dober Tek can cater to all your needs. Call 0421 741': 'Rojstni dan? Praznovanje? Srečanje? Bistro Dober Tek zadovolji vse vaše potrebe. Pokličite 0421 741',
   'Places are limited and will be offered in the order expressions of interest are received.': 'Mesta so omejena in bodo ponujena po vrstnem redu prejema izrazov zanimanja.',
-  'Or listen live right here on our website — we have RTV Slovenija, Val 202, Radio Ognjišče': 'Ali poslušajte živo tukaj na naši spletni strani — imamo RTV Slovenija, Val 202, Radio Ognjišče',
+  'Or listen live right here on our website — we have RTV Slovenija Radio 1, Val 202 and Radio ARS streaming directly:': 'Ali poslušajte živo tukaj na naši spletni strani — pretakamo RTV Slovenija Radio 1, Val 202 in Radio ARS:',
   'Looking for the latest Slovenian happenings? Whether it\'s news from Australia\'s Slovenian': 'Iščete najnovejše slovenske novosti? Ne glede na to, ali gre za novice',
   'At the Slovenian Australian Association of Canberra, every moment we share is a treasure.': 'V Slovensko-avstralski zvezi Canberra je vsak trenutek, ki ga delimo, zaklad.',
   'Celebrating Slovenian Heritage, Embracing Australian Spirit — A Community Like No Other!': 'Praznujemo slovensko dediščino, sprejemamo avstralski duh — skupnost, kakršne ni druge!',
@@ -7696,7 +7691,7 @@ function anaGetReply(q) {
 
   // Radio
   if (/radio|cms radio|cms|florian|rtv|listen|slovenian.*radio/.test(q)) {
-    return "Listen to CMS Radio 91.1FM for Slovenian Music & News with Florian — on every Friday 4:00–5:00PM! You can also stream RTV Slovenija, Radio Ognjišče, and more from our Links page. 🎵"
+    return "Listen to CMS Radio 91.1FM for Slovenian Music & News with Florian — on every Friday 4:00–5:00PM! You can also listen live to RTV Slovenija Radio 1, Val 202 and Radio ARS right on our home page. 🎵"
       + anaLink('links', 'Slovenian Radio Links');
   }
 
