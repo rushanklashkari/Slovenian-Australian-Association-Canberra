@@ -708,18 +708,23 @@ body.lang-sl span.nl-lang-en { display: none !important; }
 <!-- ==================== HOME ==================== -->
 <div id="page-home" class="page active">
   <div class="hero-slides" id="heroSlides">
-    <!-- Slide 1: Soča River -->
+    <!-- Slide 0: Tolminski Lom heart bench -->
     <div class="hero-slide active" id="slide-0">
+      <img src="images/a546043328ca.jpg" alt="Heart-shaped wooden bench above the Soča Valley at Tolminski Lom, Slovenia" style="width:100%;height:100%;object-fit:cover;object-position:center 62%">
+      <div class="hero-overlay"></div>
+    </div>
+    <!-- Slide 1: Soča River -->
+    <div class="hero-slide" id="slide-1">
       <img src="images/979ad2cbb96c.jpg" alt="Soca River Slovenia" style="width:100%;height:100%;object-fit:cover;object-position:center center">
       <div class="hero-overlay"></div>
     </div>
     <!-- Slide 2: Lake Bled Autumn -->
-    <div class="hero-slide" id="slide-1">
+    <div class="hero-slide" id="slide-2">
       <img src="images/2899afc334ec.jpg" alt="Lake Bled Slovenia Autumn" style="width:100%;height:100%;object-fit:cover;object-position:center center">
       <div class="hero-overlay"></div>
     </div>
     <!-- Slide 3: Lake Bled Winter -->
-    <div class="hero-slide" id="slide-2">
+    <div class="hero-slide" id="slide-3">
       <img src="images/95da61fe19df.jpg" alt="Lake Bled Slovenia Winter" style="width:100%;height:100%;object-fit:cover;object-position:center center">
       <div class="hero-overlay"></div>
     </div>
@@ -781,6 +786,7 @@ body.lang-sl span.nl-lang-en { display: none !important; }
       <button class="hero-dot active" onclick="goToSlide(0)" style="width:24px;border-radius:4px"></button>
       <button class="hero-dot" onclick="goToSlide(1)"></button>
       <button class="hero-dot" onclick="goToSlide(2)"></button>
+      <button class="hero-dot" onclick="goToSlide(3)"></button>
     </div>
   </div>
   <div class="info-strip">
@@ -2071,11 +2077,11 @@ body.lang-sl span.nl-lang-en { display: none !important; }
         </div>
 
         <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.2)">
-          <div style="height:160px;overflow:hidden;border-radius:8px;margin-bottom:14px"><img src="images/a546043328ca.jpg" alt="Tolminski Lom" style="width:100%;height:100%;object-fit:cover;object-position:center" loading="lazy"></div>
-          <div style="font-size:24px;margin-bottom:8px">💚</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:17px;margin-bottom:8px;color:var(--gold)">Tolminski Lom</h3>
-          <p style="font-size:13px;opacity:.88;line-height:1.75;margin-bottom:12px">Tolminski Lom is one of the Soča Valley's most dramatic gorges — a wild stretch of turquoise water carved through rock near Tolmin, framed by waterfalls and forest.</p>
-          <a href="https://www.sktd-lom.si/lom-je-moj-dom/" target="_blank" style="color:var(--gold);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(200,168,75,.4);padding-bottom:1px">Explore Tolminski Lom ↗</a>
+          <div style="height:160px;overflow:hidden;border-radius:8px;margin-bottom:14px"><img src="images/seven-lakes-valley.jpg" alt="Seven Lakes Valley (Dolina Triglavskih jezer), Triglav National Park" style="width:100%;height:100%;object-fit:cover;object-position:center 60%" loading="lazy"></div>
+          <div style="font-size:24px;margin-bottom:8px">🥾</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:17px;margin-bottom:8px;color:var(--gold)">Seven Lakes Valley</h3>
+          <p style="font-size:13px;opacity:.88;line-height:1.75;margin-bottom:12px">The Seven Lakes Valley in Slovenia, also known as Dolina Triglavskih jezer, is a stunning hiking destination located in Triglav National Park. This high-alpine valley features seven alpine lakes and offers breathtaking views of the Triglav mountain range.</p>
+          <a href="https://en.wikipedia.org/wiki/Triglav_Lakes_Valley" target="_blank" style="color:var(--gold);font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(200,168,75,.4);padding-bottom:1px">Explore the Seven Lakes Valley ↗</a>
         </div>
 
         <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.2)">
@@ -5839,7 +5845,7 @@ function handleRenewalSubmit(e) {
 
 // ── HERO SLIDESHOW ────────────────────────────────────────────────────────
 var currentSlide = 0;
-var totalSlides = 3;
+var totalSlides = 4;
 var slideshowTimer = null;
 
 function goToSlide(n) {
@@ -6373,6 +6379,9 @@ document.addEventListener('DOMContentLoaded', function() {
 var currentLang = 'en';
 
 var slTranslations = {
+  'Seven Lakes Valley': 'Dolina Triglavskih jezer',
+  'The Seven Lakes Valley in Slovenia, also known as Dolina Triglavskih jezer, is a stunning hiking destination located in Triglav National Park. This high-alpine valley features seven alpine lakes and offers breathtaking views of the Triglav mountain range.': 'Dolina Triglavskih jezer, znana tudi kot Dolina sedmerih jezer, je čudovit pohodniški cilj v Triglavskem narodnem parku. Ta visokogorska dolina ima sedem alpskih jezer in ponuja dih jemajoče razglede na Triglavsko pogorje.',
+  'Explore the Seven Lakes Valley ↗': 'Raziščite Dolino Triglavskih jezer ↗',
   'Ask Ana': 'Vprašaj Ano',
   'Photo Archive': 'Foto arhiv',
   'Browse Our Photo Archive →': 'Prebrskajte naš foto arhiv →',
