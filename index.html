@@ -1111,12 +1111,14 @@ body.lang-sl span.nl-lang-en { display: none !important; }
 
     <!-- Natasha hero card -->
     <style>
-      .natasha-card{display:grid;grid-template-columns:320px 1fr;min-height:420px;background:var(--blue);border-radius:16px;overflow:hidden;margin-bottom:48px}
-      .natasha-img-wrap{position:relative;overflow:hidden;min-height:320px}
-      .natasha-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 12%}
+      .natasha-card{display:grid;grid-template-columns:340px 1fr;min-height:420px;background:var(--blue);border-radius:16px;margin-bottom:48px}
+      .natasha-img-wrap{position:sticky;top:130px;align-self:start;overflow:hidden;margin:24px 0 24px 24px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+      .natasha-img-wrap img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 12%}
       .natasha-bio{padding:40px;color:white;display:flex;flex-direction:column;justify-content:center}
       @media(max-width:700px){
-        .natasha-card{grid-template-columns:1fr;grid-template-rows:380px auto}
+        .natasha-card{grid-template-columns:1fr;grid-template-rows:auto auto}
+        .natasha-img-wrap{position:relative;top:auto;height:440px;margin:0;border-radius:16px 16px 0 0;box-shadow:none}
+        .natasha-img-wrap img{height:100%;aspect-ratio:auto}
         .natasha-bio{padding:28px 22px}
         .natasha-bio h2{font-size:26px}
         .natasha-bio p{font-size:14px}
