@@ -1,7 +1,7 @@
 # Builds the Photo Archive and uploads the site to VentraIP (cPanel) over FTP
 # every time something changes on the main branch — including photos uploaded on GitHub.
 # Needs three repository secrets (Settings → Secrets and variables → Actions):
-#   FTP_SERVER   e.g. ftp.slovenianclubcanberra.org.au  (or the server name VentraIP gives you)
+#   FTP_SERVER   s05ae.syd6.hostingplatform.net.au (VentraIP server)
 #   FTP_USERNAME the cPanel / FTP account username
 #   FTP_PASSWORD its password
 name: Deploy to VentraIP
@@ -24,7 +24,7 @@ jobs:
         env:
           S: ${{ secrets.FTP_SERVER }}
         run: if [ -z "$S" ]; then echo "FTP secrets not set yet — skipping upload."; echo "go=no" >> $GITHUB_OUTPUT; else echo "go=yes" >> $GITHUB_OUTPUT; fi
-      - name: Upload changed files to public_html
+      - name: Upload changed files to the website folder (FTP account home = slovenianclubcanberra.org.au)
         if: steps.check.outputs.go == 'yes'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          server-dir: public_html/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
