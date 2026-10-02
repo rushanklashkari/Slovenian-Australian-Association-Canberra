@@ -27,6 +27,22 @@ const IMG_RE = /\.(jpe?g|png|webp|gif)$/i;
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const LOGO = '../images/ed502fafe657.jpg';
 
+// Slovenian event titles (folder name → title). A line "sl: ..." in info.txt overrides.
+const SL_TITLES = {
+  'anzac-day':'Dan Anzac','australia-day':'Dan Avstralije','awards':'Nagrade in priznanja','boxing-day-bbq':'Piknik na Boxing Day',
+  'bus-trip-to-oktoberfest':'Avtobusni izlet na Oktoberfest','chestnut-roasting':'Peka kostanja','club-work':'Delo v klubu',
+  'denis-novato':'Denis Novato','ekaterina-leposa-preseren-day':'Ekaterina Leposa + Prešernov dan','folklore-dance-workshop':'Delavnica folklornega plesa',
+  'function-room-setup':'Priprava dvorane','hearts-and-hands-function':'Prireditev Hearts and Hands','helen-blagne-preseren-day':'Helen Blagne + Prešernov dan',
+  'international-womens-day':'Mednarodni dan žena','miklavz':'Miklavž','ministry-visit-from-slovenia':'Obisk ministrstva iz Slovenije',
+  'multicultural-festival':'Multikulturni festival','natasa-konc-lorenzutti':'Nataša Konc Lorenzutti','new-years-eve':'Silvestrovo','pust':'Pust',
+  'sewing-bee':'Šivalna delavnica','statehood-day':'Dan državnosti','working-bee':'Delovna akcija',
+};
+const MONTHS_SL = ['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'];
+// bilingual text: both versions in the page, CSS shows the chosen one
+const L = (en, sl) => `<span class="en">${en}</span><span class="sl">${sl}</span>`;
+const plural = (n, one, two, few, many) => n % 100 === 1 ? one : n % 100 === 2 ? two : (n % 100 === 3 || n % 100 === 4) ? few : many;
+const photosLabel = n => L(`${n} photo${n === 1 ? '' : 's'}`, `${n} ${plural(n,'fotografija','fotografiji','fotografije','fotografij')}`);
+const eventsLabel = n => L(`${n} event${n === 1 ? '' : 's'}`, `${n} ${plural(n,'dogodek','dogodka','dogodki','dogodkov')}`);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const urlPath = (...parts) => parts.map(p => encodeURIComponent(p)).join('/');
 const natural = (a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
@@ -35,9 +51,9 @@ const slugify = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()
 
 function parseFolder(name) {
   let m = name.match(/^(\d{4})-(\d{2})-(\d{2})[\s_-]+(.+)$/);
-  if (m) return { sort: `${m[1]}${m[2]}${m[3]}`, date: `${+m[3]} ${MONTHS[+m[2]-1]} ${m[1]}`, title: m[4] };
+  if (m) return { sort: `${m[1]}${m[2]}${m[3]}`, date: `${+m[3]} ${MONTHS[+m[2]-1]} ${m[1]}`, dateSl: `${+m[3]}. ${MONTHS_SL[+m[2]-1]} ${m[1]}`, title: m[4] };
   m = name.match(/^(\d{4})-(\d{2})[\s_-]+(.+)$/);
-  if (m) return { sort: `${m[1]}${m[2]}00`, date: `${MONTHS[+m[2]-1]} ${m[1]}`, title: m[3] };
+  if (m) return { sort: `${m[1]}${m[2]}00`, date: `${MONTHS[+m[2]-1]} ${m[1]}`, dateSl: `${MONTHS_SL[+m[2]-1]} ${m[1]}`, title: m[3] };
   m = name.match(/^(\d{4})[\s_-]+(.+)$/);
   if (m) return { sort: `${m[1]}0000`, date: m[1], title: m[2] };
   return { sort: '00000000', date: '', title: name };
@@ -55,18 +71,21 @@ function loadEvents() {
       const meta = parseFolder(d.name);
       let title = meta.title.replace(/[_]+/g, ' ').trim();
       let description = '';
+      let titleSl = SL_TITLES[d.name.toLowerCase()] || '';
       const info = path.join(dir, 'info.txt');
       if (fs.existsSync(info)) {
         const lines = fs.readFileSync(info, 'utf8').split(/\r?\n/);
         if (lines[0].trim()) title = lines[0].trim();
-        description = lines.slice(1).join('\n').trim();
+        const slLine = lines.slice(1).find(l => /^sl\s*:/i.test(l.trim()));
+        if (slLine) titleSl = slLine.replace(/^\s*sl\s*:\s*/i, '').trim();
+        description = lines.slice(1).filter(l => l !== slLine).join('\n').trim();
       }
       const coverFile = files.find(f => /^cover\.(jpe?g|png|webp)$/i.test(f)) || files[0];
       let slug = slugify(d.name); let n = 2;
       while (used.has(slug) || slug === 'index') slug = `${slugify(d.name)}-${n++}`;
       used.add(slug);
       return {
-        folder: d.name, slug, title, date: meta.date, sort: meta.sort, description,
+        folder: d.name, slug, title, titleSl: titleSl || title, date: meta.date, dateSl: meta.dateSl || meta.date, sort: meta.sort, description,
         photos: files.map(f => urlPath('photos', d.name, f)),
         files, cover: urlPath('photos', d.name, coverFile),
       };
@@ -98,6 +117,12 @@ header{background:#fff;border-bottom:1px solid #e3edf8;position:sticky;top:0;z-i
 .brand small{font-size:11px;letter-spacing:.5px;color:#637d99;text-transform:uppercase}
 .back{font-size:14px;font-weight:600;color:#1d3f6e;text-decoration:none;border:1px solid #ccdaec;border-radius:8px;padding:8px 14px;white-space:nowrap}
 .back:hover{border-color:var(--gold)}
+.lang{display:inline-flex;border:1px solid #ccdaec;border-radius:999px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;font-size:12.5px;font-weight:700;padding:6px 12px;color:#637d99}
+.lang button.on{background:#1d3f6e;color:#fff}
+.right{display:flex;align-items:center;gap:10px}
+html[lang=sl] .en{display:none} html:not([lang=sl]) .sl{display:none}
+@media (max-width:600px){.back .bt{display:none}}
 .hero{background:linear-gradient(135deg,#1d3f6e 0%,#2a5298 100%);color:#fff;padding:44px 0 40px}
 .hero-in{max-width:1200px;margin:0 auto;padding:0 16px}
 .crumb{font-size:13px;opacity:.8;margin-bottom:10px}.crumb a{text-decoration:none}
@@ -151,12 +176,20 @@ function page({ title, description, heroHtml, body, script = '' }) {
 <style>${CSS}</style>
 </head><body>
 <header><div class="bar">
-  <a class="brand" href="../index.html#home"><img src="${LOGO}" alt=""><span><b>Slovenian Australian<br>Association Canberra</b><small>Photo Archive</small></span></a>
-  <a class="back" href="../index.html#memories-moments">← Back to website</a>
+  <a class="brand" href="../index.html#home"><img src="${LOGO}" alt=""><span><b>${L('Slovenian Australian<br>Association Canberra','Slovensko-avstralska<br>zveza Canberra')}</b><small>${L('Photo Archive','Foto arhiv')}</small></span></a>
+  <div class="right"><div class="lang" role="group" aria-label="Language"><button id="b-en" onclick="setLang('en')">EN</button><button id="b-sl" onclick="setLang('sl')">SL</button></div>
+  <a class="back" href="../index.html#memories-moments">← <span class="bt">${L('Back to website','Nazaj na spletno stran')}</span></a></div>
 </div></header>
 <section class="hero"><div class="hero-in">${heroHtml}</div></section>
 <main>${body}</main>
 <footer>© ${new Date().getFullYear()} Slovenian-Australian Association Canberra Inc · 19 Irving St, Phillip ACT 2606</footer>
+<script>
+function setLang(l){document.documentElement.lang=l;try{localStorage.setItem('saa_lang',l)}catch(e){}
+document.getElementById('b-en').className=l==='sl'?'':'on';document.getElementById('b-sl').className=l==='sl'?'on':'';
+document.querySelectorAll('[data-ph-sl]').forEach(function(i){if(!i.dataset.phEn)i.dataset.phEn=i.placeholder;i.placeholder=l==='sl'?i.dataset.phSl:i.dataset.phEn;});}
+var _l='en';try{_l=localStorage.getItem('saa_lang')||'en'}catch(e){}setLang(_l);
+function t(en,sl){return document.documentElement.lang==='sl'?sl:en;}
+</script>
 ${script}
 </body></html>`;
 }
@@ -164,21 +197,21 @@ ${script}
 function buildIndex(events) {
   const total = events.reduce((n, e) => n + e.photos.length, 0);
   const cards = events.map(e => `
-    <a class="ev" href="${e.slug}.html" data-q="${esc((e.title + ' ' + e.date).toLowerCase())}">
+    <a class="ev" href="${e.slug}.html" data-q="${esc((e.title + ' ' + e.titleSl + ' ' + e.date).toLowerCase())}">
       <img loading="lazy" src="${e.cover}" alt="${esc(e.title)}">
-      <div><span class="d">${esc(e.date)}</span><h2>${esc(e.title)}</h2><span class="n">${e.photos.length} photo${e.photos.length === 1 ? '' : 's'}</span></div>
+      <div><span class="d">${L(esc(e.date), esc(e.dateSl))}</span><h2>${L(esc(e.title), esc(e.titleSl))}</h2><span class="n">${photosLabel(e.photos.length)}</span></div>
     </a>`).join('');
   const body = events.length ? `
-    <input class="search" type="search" placeholder="Search events…" aria-label="Search events" oninput="var q=this.value.toLowerCase();document.querySelectorAll('.ev').forEach(function(c){c.style.display=c.dataset.q.indexOf(q)>-1?'':'none'})">
+    <input class="search" type="search" placeholder="Search events…" data-ph-sl="Iskanje dogodkov…" aria-label="Search events" oninput="var q=this.value.toLowerCase();document.querySelectorAll('.ev').forEach(function(c){c.style.display=c.dataset.q.indexOf(q)>-1?'':'none'})">
     <div class="events">${cards}</div>`
-    : `<p class="empty">Photos are on their way — check back soon.</p>`;
+    : `<p class="empty">${L('Photos are on their way — check back soon.','Fotografije so na poti — preverite znova kmalu.')}</p>`;
   return page({
     title: 'Photo Archive — Slovenian Australian Association Canberra',
     description: 'Browse and download photos from events at the Slovenian Australian Association Canberra.',
-    heroHtml: `<div class="crumb"><a href="../index.html#home">Home</a> / Members / Photo Archive</div>
-      <h1>Photo Archive</h1>
-      <p>Browse and download photos from our club events, celebrations and gatherings over the years. Tap an event to see every photo — download them one at a time, or the whole set at once.</p>
-      <div class="meta"><span class="chip">📁 ${events.length} event${events.length === 1 ? '' : 's'}</span><span class="chip">📷 ${total} photos</span></div>`,
+    heroHtml: `<div class="crumb"><a href="../index.html#home">${L('Home','Domov')}</a> / ${L('Members','Člani')} / ${L('Photo Archive','Foto arhiv')}</div>
+      <h1>${L('Photo Archive','Foto arhiv')}</h1>
+      <p>${L('Browse and download photos from our club events, celebrations and gatherings over the years. Tap an event to see every photo — download them one at a time, or the whole set at once.','Prebrskajte in prenesite fotografije s klubskih prireditev, praznovanj in srečanj skozi leta. Tapnite dogodek za ogled vseh fotografij — prenesite jih posamezno ali vse naenkrat.')}</p>
+      <div class="meta"><span class="chip">📁 ${eventsLabel(events.length)}</span><span class="chip">📷 ${photosLabel(total)}</span></div>`,
     body,
   });
 }
@@ -188,7 +221,7 @@ function buildEvent(e) {
     <div class="ph"><button onclick="openLb(${i})" aria-label="View photo ${i + 1}"><img loading="lazy" src="${p}" alt="${esc(e.title)} — photo ${i + 1}"></button><a href="${p}" download="${esc(e.files[i])}" aria-label="Download photo ${i + 1}" title="Download">⬇</a></div>`).join('');
   const script = `
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <div class="top"><span id="lbc"></span><div><a class="ic" id="lbd" download>⬇ Download</a><button class="ic" onclick="closeLb()" aria-label="Close">✕</button></div></div>
+  <div class="top"><span id="lbc"></span><div><a class="ic" id="lbd" download>⬇ ${L('Download','Prenesi')}</a><button class="ic" onclick="closeLb()" aria-label="Close">✕</button></div></div>
   <button class="nav prev" onclick="step(-1)" aria-label="Previous">‹</button>
   <img id="lbi" alt="">
   <button class="nav next" onclick="step(1)" aria-label="Next">›</button>
@@ -205,23 +238,23 @@ lb.addEventListener('click',function(ev){if(ev.target===lb)closeLb();});
 var sx=null;lb.addEventListener('touchstart',function(ev){sx=ev.touches[0].clientX;},{passive:true});
 lb.addEventListener('touchend',function(ev){if(sx===null)return;var dx=ev.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null;});
 function downloadAll(btn){
-  if(typeof JSZip==='undefined'){alert('Sorry, the download could not start. Please check your connection and try again.');return;}
+  if(typeof JSZip==='undefined'){alert(t('Sorry, the download could not start. Please check your connection and try again.','Prenos se žal ni mogel začeti. Preverite povezavo in poskusite znova.'));return;}
   var label=btn.innerHTML,zip=new JSZip(),done=0;btn.disabled=true;
-  Promise.all(P.map(function(p,i){return fetch(p).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){zip.file(F[i],b);done++;btn.textContent='Preparing '+done+' / '+P.length+'…';});}))
-  .then(function(){btn.textContent='Zipping…';return zip.generateAsync({type:'blob'});})
+  Promise.all(P.map(function(p,i){return fetch(p).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){zip.file(F[i],b);done++;btn.textContent=t('Preparing ','Pripravljam ')+done+' / '+P.length+'…';});}))
+  .then(function(){btn.textContent=t('Zipping…','Stiskam…');return zip.generateAsync({type:'blob'});})
   .then(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=${JSON.stringify(e.slug + '.zip')};document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},4000);})
-  .catch(function(){alert('Sorry, something went wrong preparing the download. Please try again.');})
+  .catch(function(){alert(t('Sorry, something went wrong preparing the download. Please try again.','Pri pripravi prenosa je šlo nekaj narobe. Poskusite znova.'));})
   .then(function(){btn.disabled=false;btn.innerHTML=label;});
 }
 </script>`;
   return page({
     title: `${e.title} — Photo Archive — Slovenian Australian Association Canberra`,
     description: `${e.photos.length} photos from ${e.title}${e.date ? ', ' + e.date : ''}.`,
-    heroHtml: `<div class="crumb"><a href="../index.html#home">Home</a> / <a href="index.html">Photo Archive</a> / ${esc(e.title)}</div>
-      <h1>${esc(e.title)}</h1>
+    heroHtml: `<div class="crumb"><a href="../index.html#home">${L('Home','Domov')}</a> / <a href="index.html">${L('Photo Archive','Foto arhiv')}</a> / ${L(esc(e.title), esc(e.titleSl))}</div>
+      <h1>${L(esc(e.title), esc(e.titleSl))}</h1>
       ${e.description ? `<p>${esc(e.description).replace(/\n/g, '<br>')}</p>` : ''}
-      <div class="meta">${e.date ? `<span class="chip">📅 ${esc(e.date)}</span>` : ''}<span class="chip">📷 ${e.photos.length} photo${e.photos.length === 1 ? '' : 's'}</span></div>
-      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px"><button class="btn" onclick="downloadAll(this)">⬇ Download all (${e.photos.length})</button><a class="btn" style="background:rgba(255,255,255,.14);color:#fff" href="index.html">← All events</a></div>`,
+      <div class="meta">${e.date ? `<span class="chip">📅 ${L(esc(e.date), esc(e.dateSl))}</span>` : ''}<span class="chip">📷 ${photosLabel(e.photos.length)}</span></div>
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px"><button class="btn" onclick="downloadAll(this)">⬇ ${L('Download all','Prenesi vse')} (${e.photos.length})</button><a class="btn" style="background:rgba(255,255,255,.14);color:#fff" href="index.html">← ${L('All events','Vsi dogodki')}</a></div>`,
     body: `<div class="grid">${grid}</div>`,
     script,
   });
