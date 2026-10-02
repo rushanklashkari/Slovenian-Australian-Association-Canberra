@@ -1,0 +1,43 @@
+# Builds the Photo Archive and uploads the site to VentraIP (cPanel) over FTP
+# every time something changes on the main branch — including photos uploaded on GitHub.
+# Needs three repository secrets (Settings → Secrets and variables → Actions):
+#   FTP_SERVER   e.g. ftp.slovenianclubcanberra.org.au  (or the server name VentraIP gives you)
+#   FTP_USERNAME the cPanel / FTP account username
+#   FTP_PASSWORD its password
+name: Deploy to VentraIP
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build Photo Archive pages
+        run: node build-archive.js
+      - name: Check FTP details are set
+        id: check
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+        run: if [ -z "$S" ]; then echo "FTP secrets not set yet — skipping upload."; echo "go=no" >> $GITHUB_OUTPUT; else echo "go=yes" >> $GITHUB_OUTPUT; fi
+      - name: Upload changed files to public_html
+        if: steps.check.outputs.go == 'yes'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            netlify.toml
+            build-archive.js
+            newsletter-photos/**

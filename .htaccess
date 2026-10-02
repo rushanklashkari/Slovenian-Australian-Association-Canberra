@@ -1,0 +1,26 @@
+# Slovenian Australian Association Canberra — Apache settings for VentraIP (cPanel) hosting
+DirectoryIndex index.html
+
+# Always use https://
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Hide build/config files
+<FilesMatch "^(build-archive\.js|netlify\.toml|README\.md|order\.txt|info\.txt)$">
+  Require all denied
+</FilesMatch>
+
+# Faster repeat visits: cache photos, music and fonts; always re-check pages
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType audio/mpeg "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</IfModule>
