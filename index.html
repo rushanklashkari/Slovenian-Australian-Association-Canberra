@@ -797,10 +797,7 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               "Slovenian Club<br><em>Canberra</em>",
               "Slovenian Australian<br><em>Association Canberra</em>"
             ];
-            var namesSL = [
-              "Slovenskem klubu<br><em>Canberra</em>",
-              "Slovensko-avstralski<br><em>zvezi Canberra</em>"
-            ];
+            var namesSL = names; // hero title is English-only in both languages
             window._heroIdx = 0;
             window._heroRefresh = function(){ var el = document.getElementById('hero-name'); if (el) el.innerHTML = (window.currentLang==='sl' ? namesSL : names)[window._heroIdx || 0]; };
             var idx = 0;
@@ -8719,6 +8716,8 @@ function _takeSnapshot() {
       var tag = p.tagName ? p.tagName.toLowerCase() : '';
       if (['script','style','audio','source'].indexOf(tag) >= 0) return NodeFilter.FILTER_REJECT;
       if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      // Home hero title stays in English in both languages
+      if (p.closest && p.closest('#hero-line1, #hero-name')) return NodeFilter.FILTER_REJECT;
       // Skip pre-written Slovenian content blocks — these are managed by CSS toggle
       if (_isInsideSLBlock(n)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
