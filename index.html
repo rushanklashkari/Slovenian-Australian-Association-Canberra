@@ -550,6 +550,29 @@ body.lang-sl span.nl-lang-en { display: none !important; }
 .lang-hero-photo{border-radius:14px;overflow:hidden;height:440px;margin-bottom:10px;box-shadow:0 6px 20px rgba(0,0,0,.12)}
 .lang-photo-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 @media(max-width:700px){.lang-hero-photo{height:260px}.lang-hero-photo img{object-position:center 72%!important}.lang-photo-row{grid-template-columns:repeat(2,1fr)}.lang-photo-row>div{height:150px!important}}
+
+/* ── LEGAL PAGES */
+.legal{color:var(--text-mid);font-size:15px;line-height:1.8}
+.legal h2{font-family:'Playfair Display',serif;font-size:21px;color:var(--blue);margin:34px 0 10px}
+.legal p{margin:0 0 14px}
+.legal ul{margin:0 0 16px 22px}
+.legal li{margin-bottom:6px}
+.legal a{color:var(--blue-mid);text-decoration:underline;text-underline-offset:2px;word-break:break-word}
+.legal-lead{font-size:16.5px;color:var(--text-mid);background:var(--blue-pale);border-left:4px solid var(--gold);padding:18px 22px;border-radius:0 10px 10px 0}
+.legal-updated{font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px!important}
+.legal-note{font-size:13px;font-style:italic;color:var(--text-muted)}
+.legal-contact{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:18px 22px;margin:8px 0 18px;line-height:1.75}
+.legal-link{color:var(--blue-mid);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.legal-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.legal-nav>span{font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--border-light);background:#fff;color:var(--blue);cursor:pointer;transition:background .2s}
+.legal-nav>span:hover{background:var(--blue-pale)}
+.legal-nav>span.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.footer-legal{display:flex;flex-wrap:wrap;gap:4px 16px;flex-basis:100%;justify-content:center;margin-top:6px}
+.footer-legal>span{cursor:pointer;text-decoration:underline;text-underline-offset:2px;opacity:.9}
+.footer-legal>span:hover{opacity:1}
+.footer-bottom{padding-bottom:80px}
+.form-privacy-note{font-size:12px;line-height:1.5;opacity:.8;margin-top:10px}
+.form-privacy-note span.lk{text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -1361,7 +1384,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <div class="form-group"><label>Message <span class="req">*</span></label><textarea name="message" required style="min-height:140px"></textarea></div>
           <input type="hidden" name="_subject" value="Contact Form - Slovenian Club Canberra">
           <button type="submit" class="submit-btn">Send message</button>
-        </form>
+        <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
       </div>
     </div>
   </div></section>
@@ -1495,7 +1519,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
             <p style="font-size:13px;color:#2c4a7c;margin-bottom:10px">If you have a photo of the dish, your family, or a handwritten recipe card, please email it directly to <a href="mailto:secretary@slovenianclubcanberra.org.au?subject=Naša Miza Photo Submission" style="color:#2c4a7c;font-weight:600">secretary@slovenianclubcanberra.org.au</a> with the subject line <strong>Naša Miza Photo</strong>.</p>
           </div>
           <button type="submit" style="width:100%;background:linear-gradient(135deg,#0a2a6b,#003DA5);color:white;border:none;border-radius:10px;padding:16px 24px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;cursor:pointer;letter-spacing:.3px;transition:opacity .2s" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Submit My Recipe 📖</button>
-        </form>
+        <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
         <p style="text-align:center;font-size:13px;color:#2c4a7c;margin-top:16px;font-style:italic">Every submission is read by Natasha personally. Thank you for helping us create this special keepsake.</p>
       </div>
 
@@ -1777,7 +1802,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
         </div>
         <div class="form-group"><label>Tell us about yourself and your availability</label><textarea name="message" style="min-height:100px"></textarea></div>
         <button type="submit" class="submit-btn">Register to Volunteer</button>
-      </form>
+      <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
     </div>
   </div></section>
 </div>
@@ -1849,7 +1875,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           </div>
           <div class="form-group" style="margin-top:18px"><label>Additional notes</label><textarea name="notes" placeholder="Guest numbers, special requirements..."></textarea></div>
           <button type="submit" class="submit-btn">Send booking enquiry</button>
-        </form>
+        <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
       </div>
     </div>
 
@@ -2456,7 +2483,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <textarea name="message" rows="3" style="width:100%;border:1px solid rgba(255,255,255,.3);border-radius:7px;padding:10px 14px;font-size:14px;font-family:inherit;background:rgba(255,255,255,.15);color:white;resize:vertical;min-height:80px"></textarea>
         </div>
         <button type="submit" class="btn-white" style="width:100%;font-size:15px;padding:13px">Register My Interest</button>
-      </form>
+      <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
     </div>
 
     <!-- Interstate / online learning -->
@@ -2634,7 +2662,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               <div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
               <div class="form-group"><label>Slovenian language ability</label><select name="language"><option value="0">0 - No knowledge</option><option value="1">1 - Some understanding</option><option value="2">2 - Understand well</option><option value="3">3 - Speak some</option><option value="4">4 - Fluent</option></select></div>
               <button type="submit" class="submit-btn">Submit application</button>
-            </form>
+            <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
             <div id="assoc-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
               <div style="font-size:24px;margin-bottom:8px">✅</div>
               <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Application received!</h3>
@@ -2663,7 +2692,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               <div class="form-group"><label>Why would you like to become a full member? <span class="req">*</span></label><textarea name="reason" required placeholder="Tell us a little about yourself and your connection to the Slovenian community..." style="min-height:100px"></textarea></div>
               <div class="form-group"><label>Connection to the Slovenian community</label><input type="text" name="connection" placeholder="e.g. Slovenian heritage, spouse/partner, community interest..."></div>
               <button type="submit" class="submit-btn">Submit application</button>
-            </form>
+            <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
             <div id="ordinary-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
               <div style="font-size:24px;margin-bottom:8px">✅</div>
               <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Application received!</h3>
@@ -2692,7 +2722,8 @@ body.lang-sl span.nl-lang-en { display: none !important; }
             <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
             <div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
             <button type="submit" class="submit-btn">Lodge renewal</button>
-          </form>
+          <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
+</form>
           <div id="renewal-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
             <div style="font-size:24px;margin-bottom:8px">✅</div>
             <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Renewal received!</h3>
@@ -5734,6 +5765,331 @@ body.lang-sl span.nl-lang-en { display: none !important; }
   </div></section>
 </div>
 
+<!-- ===================== LEGAL PAGES ===================== -->
+<div id="page-privacy" class="page">
+  <div class="page-header"><div class="page-header-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span class="active">Privacy Policy</span></div>
+    <h1><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></h1><p><span class="nl-lang-en">How we collect, use and protect your personal information</span><span class="nl-lang-sl">Kako zbiramo, uporabljamo in varujemo vaše osebne podatke</span></p>
+  </div></div>
+  <section class="section"><div class="container legal" style="max-width:820px">
+    <div class="legal-nav"><span class="on" onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></div>
+    <div class="nl-lang-en"><p class="legal-updated">Last updated: 2 October 2026</p>
+<p class="legal-lead">The Slovenian-Australian Association Canberra Inc (ABN 75 743 046 949) (“the Club”, “we”, “us”) respects your privacy. This policy explains what personal information we collect through this website and our activities, how we use it, and how you can access or correct it. Although many small not-for-profit associations are not required to comply with the <em>Privacy Act 1988</em> (Cth), we have chosen to follow the Australian Privacy Principles (APPs) as good practice.</p>
+<h2>1. What we collect</h2>
+<p>We only collect information we need for the purpose you give it to us. Depending on how you deal with us, this may include:</p>
+<ul>
+<li><strong>Contact enquiries</strong> – your name, email, phone number and message.</li>
+<li><strong>Membership applications and renewals</strong> – name, postal address, email, phone, date of birth, membership type, Slovenian language level, your connection to the community and payment reference details.</li>
+<li><strong>Hall and venue bookings</strong> – your name, contact details, event date, type of event, guest numbers and any special requirements.</li>
+<li><strong>Volunteer and Learn Slovenian registrations</strong> – your name, contact details, availability and interests.</li>
+<li><strong>Cookbook and story submissions</strong> – your name, contact details, recipes, stories and any photos you send us.</li>
+<li><strong>Photographs and video</strong> taken at Club events (see our <span class="legal-link" onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politiko fotografij</span></span>).</li>
+</ul>
+<p>We do not ask for sensitive information such as health information. Please do not include it in a message unless it is needed (for example, an accessibility requirement for a booking).</p>
+<h2>2. How we collect it</h2>
+<p>We collect information directly from you – through the forms on this website, by email, by phone, at the bar or office, and at events. Where possible you can deal with us anonymously or using a pseudonym (for example, a general enquiry), but we need your real details to process memberships and bookings.</p>
+<h2>3. How we use it</h2>
+<ul>
+<li>to process and manage memberships, including keeping the register of members required under the <em>Associations Incorporation Act 1991</em> (ACT);</li>
+<li>to respond to enquiries and manage hall bookings;</li>
+<li>to tell members about events, newsletters, meetings and Club news;</li>
+<li>to organise volunteers, classes and community projects such as the Club cookbook;</li>
+<li>to meet our legal, insurance, liquor-licensing and financial obligations.</li>
+</ul>
+<p>We will not sell, rent or trade your personal information, and we do not use it for third-party marketing. You can ask us to stop sending you Club news at any time.</p>
+<h2>4. Who we share it with</h2>
+<p>Your information is seen by the Committee members and volunteers who need it to do their job. We also use a small number of service providers to run this website:</p>
+<ul>
+<li><strong>Formspree</strong> – receives the forms you submit on this website and forwards them to the Club by email.</li>
+<li><strong>Netlify</strong> – hosts this website and keeps basic server logs (such as IP addresses) for security and reliability.</li>
+<li><strong>Google Fonts and cdnjs (Cloudflare)</strong> – supply fonts and a download tool used by the Photo Archive; your browser’s IP address is visible to them when these load.</li>
+<li><strong>RTV Slovenija</strong> – if you press play on a radio station, the audio streams directly from their servers.</li>
+</ul>
+<p>Some of these providers store data overseas, mainly in the United States. By submitting a form you consent to your information being handled by them for that purpose. We may also disclose information where the law requires it.</p>
+<h2>5. Cookies and local storage</h2>
+<p>This website does <strong>not</strong> use advertising or analytics cookies, and we do not track you across other websites. The home-page quiz stores a short list of the questions you have already seen in your browser’s local storage, so you get new questions next time. This stays on your device and you can clear it at any time through your browser settings. Links to Facebook, Instagram and other websites are governed by those sites’ own privacy policies.</p>
+<h2>6. Our assistant, Ana</h2>
+<p>“Ask Ana” runs entirely in your browser. Questions you type are not sent to or stored by the Club. Please don’t type personal details into it – use the <span class="legal-link" onclick="showPage('contact')"><span class="nl-lang-en">Contact page</span><span class="nl-lang-sl">stran Kontakt</span></span> instead.</p>
+<h2>7. Storage and security</h2>
+<p>We take reasonable steps to protect personal information from misuse, loss and unauthorised access. Paper records are kept securely at the Club, and electronic records are limited to people who need them. We keep information only as long as needed for the purpose it was collected or as required by law (for example, financial and membership records), and then securely destroy it.</p>
+<h2>8. Access and correction</h2>
+<p>You may ask to see the personal information we hold about you, or ask us to correct it, at any time. We will respond within a reasonable time, usually 30 days. There is no charge.</p>
+<h2>9. Children</h2>
+<p>We do not knowingly collect personal information from people under 18 without the consent of a parent or guardian. Children’s involvement in Club activities should be arranged by a parent or guardian.</p>
+<h2>10. Questions and complaints</h2>
+<p>If you have a question, or believe we have mishandled your information, please contact us first so we can try to fix it:</p>
+<div class="legal-contact"><strong>The Secretary</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Phone: <a href="tel:0262821083">02 6282 1083</a><br>Email: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+<p>If you are not satisfied with our response, you can contact the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a> or on 1300 363 992.</p>
+<h2>11. Changes to this policy</h2>
+<p>We may update this policy from time to time. The latest version will always be on this page.</p>
+</div>
+    <div class="nl-lang-sl"><p class="legal-updated">Zadnja posodobitev: 2. oktober 2026</p><p class="legal-note">Ta prevod je informativen. V primeru razhajanj velja angleška različica.</p>
+<p class="legal-lead">Slovensko-avstralska zveza Canberra Inc (ABN 75 743 046 949) (»klub«, »mi«) spoštuje vašo zasebnost. Ta politika pojasnjuje, katere osebne podatke zbiramo prek te spletne strani in pri svojih dejavnostih, kako jih uporabljamo ter kako jih lahko pregledate ali popravite. Čeprav mnoga manjša neprofitna združenja niso zavezana k spoštovanju zakona <em>Privacy Act 1988</em> (Cth), smo se odločili, da kot dobro prakso upoštevamo avstralska načela zasebnosti (Australian Privacy Principles).</p>
+<h2>1. Katere podatke zbiramo</h2>
+<p>Zbiramo le podatke, ki jih potrebujemo za namen, za katerega nam jih posredujete. Glede na vrsto stika lahko to vključuje:</p>
+<ul>
+<li><strong>Splošna vprašanja</strong> – ime, e-pošto, telefonsko številko in sporočilo.</li>
+<li><strong>Včlanitve in podaljšanja članstva</strong> – ime, naslov, e-pošto, telefon, datum rojstva, vrsto članstva, znanje slovenščine, povezavo s skupnostjo in podatke o plačilu.</li>
+<li><strong>Najem dvorane</strong> – ime, kontaktne podatke, datum in vrsto dogodka, število gostov in posebne zahteve.</li>
+<li><strong>Prijave prostovoljcev in tečajev slovenščine</strong> – ime, kontaktne podatke, razpoložljivost in interese.</li>
+<li><strong>Recepti in zgodbe za kuharsko knjigo</strong> – ime, kontaktne podatke, recepte, zgodbe in fotografije, ki nam jih pošljete.</li>
+<li><strong>Fotografije in video</strong>, posneti na klubskih prireditvah (glejte <span class="legal-link" onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politiko fotografij</span></span>).</li>
+</ul>
+<p>Ne zahtevamo občutljivih podatkov, kot so zdravstveni podatki. Prosimo, da jih ne navajate, razen če so potrebni (npr. posebne potrebe pri najemu dvorane).</p>
+<h2>2. Kako jih zbiramo</h2>
+<p>Podatke zbiramo neposredno od vas – prek obrazcev na tej strani, po e-pošti, telefonu, v klubu in na prireditvah. Kjer je mogoče, lahko z nami komunicirate anonimno, za članstvo in najem dvorane pa potrebujemo vaše prave podatke.</p>
+<h2>3. Kako jih uporabljamo</h2>
+<ul>
+<li>za urejanje članstva, vključno z vodenjem registra članov, ki ga zahteva zakon <em>Associations Incorporation Act 1991</em> (ACT);</li>
+<li>za odgovore na vprašanja in urejanje najema dvorane;</li>
+<li>za obveščanje članov o prireditvah, glasilih, sestankih in novicah;</li>
+<li>za organizacijo prostovoljcev, tečajev in projektov, kot je klubska kuharska knjiga;</li>
+<li>za izpolnjevanje zakonskih, zavarovalnih, licenčnih in finančnih obveznosti.</li>
+</ul>
+<p>Vaših podatkov ne prodajamo, ne oddajamo in jih ne uporabljamo za trženje tretjih oseb. Kadar koli lahko zahtevate, da vam ne pošiljamo več klubskih novic.</p>
+<h2>4. S kom jih delimo</h2>
+<p>Do vaših podatkov imajo dostop le člani odbora in prostovoljci, ki jih potrebujejo za svoje delo. Za delovanje spletne strani uporabljamo nekaj ponudnikov storitev:</p>
+<ul>
+<li><strong>Formspree</strong> – sprejme obrazce, ki jih oddate na tej strani, in jih po e-pošti posreduje klubu.</li>
+<li><strong>Netlify</strong> – gosti spletno stran in zaradi varnosti hrani osnovne dnevnike strežnika (npr. naslove IP).</li>
+<li><strong>Google Fonts in cdnjs (Cloudflare)</strong> – zagotavljata pisave in orodje za prenos v Foto arhivu; ob nalaganju vidita naslov IP vašega brskalnika.</li>
+<li><strong>RTV Slovenija</strong> – če zaženete radijsko postajo, se zvok predvaja neposredno z njihovih strežnikov.</li>
+</ul>
+<p>Nekateri ponudniki hranijo podatke v tujini, predvsem v ZDA. Z oddajo obrazca soglašate, da jih za ta namen obdelajo. Podatke lahko razkrijemo tudi, kadar to zahteva zakon.</p>
+<h2>5. Piškotki in lokalna shramba</h2>
+<p>Ta stran <strong>ne</strong> uporablja oglaševalskih ali analitičnih piškotkov in vas ne sledi na drugih straneh. Kviz na domači strani v lokalni shrambi brskalnika hrani seznam že prikazanih vprašanj, da naslednjič dobite nova. Ti podatki ostanejo na vaši napravi in jih lahko kadar koli izbrišete v nastavitvah brskalnika. Za povezave na Facebook, Instagram in druge strani veljajo njihove politike zasebnosti.</p>
+<h2>6. Naša pomočnica Ana</h2>
+<p>»Vprašaj Ano« deluje v celoti v vašem brskalniku. Vprašanja, ki jih vpišete, se ne pošiljajo klubu in se ne shranjujejo. Prosimo, ne vpisujte osebnih podatkov – uporabite <span class="legal-link" onclick="showPage('contact')"><span class="nl-lang-en">Contact page</span><span class="nl-lang-sl">stran Kontakt</span></span>.</p>
+<h2>7. Hramba in varnost</h2>
+<p>Sprejemamo razumne ukrepe za zaščito osebnih podatkov pred zlorabo, izgubo in nepooblaščenim dostopom. Papirni dokumenti so varno shranjeni v klubu, dostop do elektronskih pa imajo le osebe, ki jih potrebujejo. Podatke hranimo le toliko časa, kot je potrebno ali kot zahteva zakon, nato jih varno uničimo.</p>
+<h2>8. Vpogled in popravki</h2>
+<p>Kadar koli lahko zahtevate vpogled v podatke, ki jih hranimo o vas, ali njihov popravek. Odgovorili bomo v razumnem roku, običajno v 30 dneh. Storitev je brezplačna.</p>
+<h2>9. Otroci</h2>
+<p>Osebnih podatkov oseb, mlajših od 18 let, ne zbiramo brez soglasja staršev ali skrbnikov.</p>
+<h2>10. Vprašanja in pritožbe</h2>
+<p>Če imate vprašanje ali menite, da smo z vašimi podatki ravnali nepravilno, se najprej obrnite na nas:</p>
+<div class="legal-contact"><strong>Tajnica</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Telefon: <a href="tel:0262821083">02 6282 1083</a><br>E-pošta: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+<p>Če z našim odgovorom niste zadovoljni, se lahko obrnete na avstralskega pooblaščenca za informacije (OAIC): <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a> ali 1300 363 992.</p>
+<h2>11. Spremembe</h2>
+<p>Politiko lahko občasno posodobimo. Najnovejša različica je vedno objavljena na tej strani.</p>
+</div>
+  </div></section>
+</div>
+<div id="page-terms" class="page">
+  <div class="page-header"><div class="page-header-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span class="active">Terms of Use</span></div>
+    <h1><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></h1><p><span class="nl-lang-en">The rules for using this website</span><span class="nl-lang-sl">Pravila za uporabo te spletne strani</span></p>
+  </div></div>
+  <section class="section"><div class="container legal" style="max-width:820px">
+    <div class="legal-nav"><span onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span class="on" onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></div>
+    <div class="nl-lang-en"><p class="legal-updated">Last updated: 2 October 2026</p>
+<p class="legal-lead">Welcome to the website of the Slovenian-Australian Association Canberra Inc (“the Club”). By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
+<h2>1. About the information on this site</h2>
+<p>We do our best to keep event dates, opening hours, menus, prices and other details up to date, but things can change at short notice. Information on this website is a general guide only. Please check with the Club, or our Facebook page, before making plans that depend on it. Recipes, history and travel information about Slovenia are shared for interest and are not professional advice.</p>
+<h2>2. Memberships, bookings and events</h2>
+<p>Submitting a membership application or booking enquiry through this website is a request only. Memberships are subject to the Club’s Constitution and approval by the Committee. Hall bookings are confirmed only when the Club confirms them in writing and any required deposit is paid, and they are subject to the Club’s hire conditions. Event tickets, fees and prices are as advertised at the time and may change.</p>
+<h2>3. Club bar and alcohol</h2>
+<p>The Club bar operates under an ACT liquor licence. Alcohol is served only to people aged 18 or over, in line with responsible service of alcohol requirements. Staff may ask for proof of age and may refuse service. Information about drinks on this website is not an encouragement to drink irresponsibly.</p>
+<h2>4. Using this website</h2>
+<p>You agree not to:</p>
+<ul>
+<li>use the site for anything unlawful, or to harass, abuse or impersonate anyone;</li>
+<li>submit false information, spam or harmful code through our forms;</li>
+<li>interfere with the site’s security or operation, or scrape it in bulk;</li>
+<li>use Club content in ways not allowed by our <span class="legal-link" onclick="showPage('copyright')"><span class="nl-lang-en">Copyright notice</span><span class="nl-lang-sl">Obvestilo o avtorskih pravicah</span></span>.</li>
+</ul>
+<h2>5. What you send us</h2>
+<p>When you send us a recipe, story, photo or other material (for example for the Club cookbook or newsletter), you confirm that it is yours to share, and you give the Club a free, non-exclusive permission to edit, publish and share it for Club purposes – on this website, in newsletters, on social media and in printed Club publications – with credit to you where practical. You keep your own rights in it. If you later want something removed, just ask.</p>
+<h2>6. Ask Ana</h2>
+<p>“Ask Ana” is an automated helper that gives answers from information on this website. Its replies may be incomplete or out of date. For anything important – bookings, membership or payments – please contact the Club directly.</p>
+<h2>7. Links to other websites</h2>
+<p>We link to other websites (such as Slovenian tourism, radio and government sites) for your interest. We do not control them and are not responsible for their content, availability or privacy practices. A link is not an endorsement.</p>
+<h2>8. Disclaimer and liability</h2>
+<p>The Club is a volunteer-run, not-for-profit association. This website is provided “as is”. To the extent permitted by law, the Club does not guarantee that the site will be error-free or always available, and is not liable for any loss arising from the use of, or reliance on, this website or linked sites. Nothing in these terms excludes any rights you have under the Australian Consumer Law that cannot lawfully be excluded.</p>
+<h2>9. Privacy</h2>
+<p>Our <span class="legal-link" onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span> explains how we handle personal information.</p>
+<h2>10. Changes and governing law</h2>
+<p>We may update these terms at any time by posting the new version here. These terms are governed by the laws of the Australian Capital Territory.</p>
+<h2>Contact</h2>
+<div class="legal-contact"><strong>The Secretary</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Phone: <a href="tel:0262821083">02 6282 1083</a><br>Email: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+</div>
+    <div class="nl-lang-sl"><p class="legal-updated">Zadnja posodobitev: 2. oktober 2026</p><p class="legal-note">Ta prevod je informativen. V primeru razhajanj velja angleška različica.</p>
+<p class="legal-lead">Dobrodošli na spletni strani Slovensko-avstralske zveze Canberra Inc (»klub«). Z uporabo te strani soglašate s temi pogoji. Če se z njimi ne strinjate, strani ne uporabljajte.</p>
+<h2>1. O informacijah na strani</h2>
+<p>Trudimo se, da so datumi prireditev, delovni čas, jedilniki, cene in drugi podatki ažurni, vendar se lahko hitro spremenijo. Informacije na tej strani so le splošno vodilo. Pred načrtovanjem jih preverite v klubu ali na naši Facebook strani. Recepti, zgodovina in turistične informacije o Sloveniji so namenjeni zanimivosti in niso strokovni nasvet.</p>
+<h2>2. Članstvo, najem in prireditve</h2>
+<p>Oddaja prijave za članstvo ali povpraševanja za najem prek te strani je le zahteva. Članstvo ureja statut kluba in ga odobri odbor. Najem dvorane je potrjen šele, ko ga klub pisno potrdi in je plačan morebitni polog; veljajo klubski pogoji najema. Vstopnine in cene veljajo, kot so bile objavljene, in se lahko spremenijo.</p>
+<h2>3. Klubski bar in alkohol</h2>
+<p>Klubski bar deluje na podlagi licence za točenje alkohola v ACT. Alkohol strežemo le osebam, starim 18 let ali več, v skladu s pravili odgovornega točenja. Osebje lahko zahteva dokaz o starosti in odkloni postrežbo. Informacije o pijačah na tej strani niso spodbuda k neodgovornemu pitju.</p>
+<h2>4. Uporaba strani</h2>
+<p>Strinjate se, da ne boste:</p>
+<ul>
+<li>uporabljali strani v nezakonite namene ali za nadlegovanje, žaljenje ali lažno predstavljanje;</li>
+<li>prek obrazcev pošiljali lažnih podatkov, neželene pošte ali škodljive kode;</li>
+<li>posegali v varnost ali delovanje strani ali je množično kopirali;</li>
+<li>uporabljali vsebine kluba v nasprotju z <span class="legal-link" onclick="showPage('copyright')"><span class="nl-lang-en">Copyright notice</span><span class="nl-lang-sl">Obvestilom o avtorskih pravicah</span></span>.</li>
+</ul>
+<h2>5. Kar nam pošljete</h2>
+<p>Ko nam pošljete recept, zgodbo, fotografijo ali drugo gradivo (npr. za kuharsko knjigo ali glasilo), potrjujete, da ga smete deliti, in klubu dajete brezplačno, neizključno dovoljenje, da ga za klubske namene ureja, objavi in deli – na tej strani, v glasilih, na družbenih omrežjih in v tiskanih publikacijah – z navedbo vašega imena, kjer je to mogoče. Vaše pravice ostanejo vaše. Če želite, da kaj odstranimo, nam to sporočite.</p>
+<h2>6. Vprašaj Ano</h2>
+<p>»Vprašaj Ano« je samodejna pomočnica, ki odgovarja na podlagi vsebine te strani. Odgovori so lahko nepopolni ali zastareli. Za pomembne zadeve – najem, članstvo, plačila – se obrnite neposredno na klub.</p>
+<h2>7. Povezave na druge strani</h2>
+<p>Povezujemo na druge strani (npr. turistične, radijske in vladne strani v Sloveniji). Nanje nimamo vpliva in ne odgovarjamo za njihovo vsebino, dostopnost ali zasebnost. Povezava ne pomeni priporočila.</p>
+<h2>8. Omejitev odgovornosti</h2>
+<p>Klub je neprofitno združenje, ki ga vodijo prostovoljci. Stran je na voljo »takšna, kot je«. V obsegu, ki ga dovoljuje zakon, klub ne jamči, da bo stran brez napak ali vedno dostopna, in ne odgovarja za škodo, nastalo zaradi uporabe te strani ali povezanih strani. Nič v teh pogojih ne izključuje pravic, ki vam jih zagotavlja avstralsko potrošniško pravo (Australian Consumer Law).</p>
+<h2>9. Zasebnost</h2>
+<p>Kako ravnamo z osebnimi podatki, pojasnjuje naša <span class="legal-link" onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span>.</p>
+<h2>10. Spremembe in veljavno pravo</h2>
+<p>Pogoje lahko kadar koli posodobimo z objavo nove različice na tej strani. Za te pogoje velja pravo Avstralskega prestolničnega ozemlja (ACT).</p>
+<h2>Kontakt</h2>
+<div class="legal-contact"><strong>Tajnica</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Telefon: <a href="tel:0262821083">02 6282 1083</a><br>E-pošta: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+</div>
+  </div></section>
+</div>
+<div id="page-copyright" class="page">
+  <div class="page-header"><div class="page-header-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span class="active">Copyright</span></div>
+    <h1><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></h1><p><span class="nl-lang-en">Who owns the content on this site, and how you may use it</span><span class="nl-lang-sl">Komu pripada vsebina strani in kako jo lahko uporabljate</span></p>
+  </div></div>
+  <section class="section"><div class="container legal" style="max-width:820px">
+    <div class="legal-nav"><span onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span class="on" onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></div>
+    <div class="nl-lang-en"><p class="legal-updated">Last updated: 2 October 2026</p>
+<p class="legal-lead">© 2026 Slovenian-Australian Association Canberra Inc. All rights reserved, except where stated otherwise.</p>
+<h2>1. What is covered</h2>
+<p>Unless otherwise noted, the text, newsletters, photographs, graphics, logos and design of this website belong to the Slovenian-Australian Association Canberra Inc, or are used with permission of the people who created them – many of them our own members and volunteers.</p>
+<h2>2. What you may do</h2>
+<ul>
+<li>view, print and download pages and newsletters for your own personal, non-commercial use;</li>
+<li>share links to any page of this website;</li>
+<li>quote short extracts, provided you credit “Slovenian-Australian Association Canberra” and link back to us;</li>
+<li>download photos from the Photo Archive for personal, family and community remembrance (see our <span class="legal-link" onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politiko fotografij</span></span>).</li>
+</ul>
+<h2>3. What needs our permission</h2>
+<ul>
+<li>using our content, photos or logos for any commercial purpose, advertising or merchandise;</li>
+<li>republishing whole articles, newsletters or recipes on another website or in print;</li>
+<li>altering photos of people, or using them in a misleading or offensive way;</li>
+<li>using the Club’s name or logo in a way that suggests we endorse you.</li>
+</ul>
+<p>Requests are welcome – the Committee is usually happy to help community and cultural projects.</p>
+<h2>4. Third-party material</h2>
+<p>Some material on this site belongs to others and is shown for cultural and non-commercial purposes. This includes the background music <em>“Mi Se’ Mamo Radi”</em> by Ansambel Bratov Avsenik (Kvintet Avsenik), radio streams from RTV Slovenija, and the names and labels of Slovenian drinks and products. All rights remain with their respective owners. Trade marks belong to their owners and their use does not imply any affiliation.</p>
+<h2>5. If you think we’ve used your work</h2>
+<p>We are a volunteer organisation and have tried to use only material we own or have permission for. If you believe something on this site infringes your copyright, please email <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a> with a link to the item and details of your claim. We will look into it promptly and remove the material if appropriate.</p>
+</div>
+    <div class="nl-lang-sl"><p class="legal-updated">Zadnja posodobitev: 2. oktober 2026</p><p class="legal-note">Ta prevod je informativen. V primeru razhajanj velja angleška različica.</p>
+<p class="legal-lead">© 2026 Slovenian-Australian Association Canberra Inc. Vse pravice pridržane, razen kjer je navedeno drugače.</p>
+<h2>1. Kaj je zaščiteno</h2>
+<p>Če ni navedeno drugače, besedila, glasila, fotografije, grafike, logotipi in oblikovanje te strani pripadajo Slovensko-avstralski zvezi Canberra Inc ali so uporabljeni z dovoljenjem avtorjev – mnogi med njimi so naši člani in prostovoljci.</p>
+<h2>2. Kaj smete</h2>
+<ul>
+<li>ogledovati, tiskati in prenašati strani in glasila za osebno, nekomercialno uporabo;</li>
+<li>deliti povezave na katero koli stran te spletne strani;</li>
+<li>citirati krajše odlomke z navedbo vira »Slovensko-avstralska zveza Canberra« in povezavo na našo stran;</li>
+<li>prenašati fotografije iz Foto arhiva za osebni, družinski in skupnostni spomin (glejte <span class="legal-link" onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politiko fotografij</span></span>).</li>
+</ul>
+<h2>3. Za kaj potrebujete naše dovoljenje</h2>
+<ul>
+<li>za uporabo vsebin, fotografij ali logotipov v komercialne namene, oglaševanje ali izdelke;</li>
+<li>za ponovno objavo celotnih člankov, glasil ali receptov na drugi strani ali v tisku;</li>
+<li>za spreminjanje fotografij ljudi ali njihovo zavajajočo ali žaljivo uporabo;</li>
+<li>za uporabo imena ali logotipa kluba na način, ki nakazuje naše priporočilo.</li>
+</ul>
+<p>Prošnje so dobrodošle – odbor rad pomaga skupnostnim in kulturnim projektom.</p>
+<h2>4. Gradivo tretjih oseb</h2>
+<p>Nekaj gradiva na strani pripada drugim in je prikazano v kulturne, nekomercialne namene. To vključuje glasbo v ozadju <em>»Mi se’ mamo radi«</em> Ansambla bratov Avsenik, radijske prenose RTV Slovenija ter imena in etikete slovenskih pijač in izdelkov. Vse pravice ostajajo njihovim lastnikom. Blagovne znamke pripadajo lastnikom in njihova uporaba ne pomeni povezanosti.</p>
+<h2>5. Če menite, da smo uporabili vaše delo</h2>
+<p>Smo prostovoljska organizacija in smo si prizadevali uporabljati le gradivo, ki je naše ali za katerega imamo dovoljenje. Če menite, da kaj na tej strani krši vaše avtorske pravice, pišite na <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a> s povezavo do gradiva in opisom zahtevka. Zadevo bomo hitro preučili in gradivo po potrebi odstranili.</p>
+</div>
+  </div></section>
+</div>
+<div id="page-photo-policy" class="page">
+  <div class="page-header"><div class="page-header-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span class="active">Photo Policy</span></div>
+    <h1><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></h1><p><span class="nl-lang-en">Photos at our events, the Photo Archive, and how to request removal</span><span class="nl-lang-sl">Fotografije na prireditvah, Foto arhiv in zahteve za odstranitev</span></p>
+  </div></div>
+  <section class="section"><div class="container legal" style="max-width:820px">
+    <div class="legal-nav"><span onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span class="on" onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></div>
+    <div class="nl-lang-en"><p class="legal-updated">Last updated: 2 October 2026</p>
+<p class="legal-lead">Photos are how we remember our community – the dances, the feasts, the working bees and the people. We share them in our Photo Archive, newsletters and social media so members and families can enjoy them. We also want everyone to feel comfortable, so here is how we handle them.</p>
+<h2>1. Photography at Club events</h2>
+<p>Photos and video are often taken at Club events by volunteers and members. By attending, you understand that you may appear in photos that the Club shares on this website, in newsletters and on social media. If you would prefer not to be photographed, please let the photographer or a Committee member know on the day – we will respect that.</p>
+<h2>2. Children</h2>
+<p>We share photos of children only at community events where their parent or guardian is present or has agreed. We do not publish children’s full names alongside their photos. A parent or guardian can ask for any photo of their child to be removed at any time.</p>
+<h2>3. Asking for a photo to be removed</h2>
+<p>If you appear in a photo and would like it taken down, email <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a> with the event name and the photo number shown when you open it in the archive (for example “12 / 40”). No reason is needed. We aim to remove it as soon as possible, usually within a few days. Please note we cannot recall copies that others have already downloaded.</p>
+<h2>4. Downloading photos from the archive</h2>
+<p>You are welcome to download archive photos for personal, family and community remembrance – to keep, print or share with friends. Please:</p>
+<ul>
+<li>do not use them for commercial purposes, advertising or resale;</li>
+<li>do not edit photos of people in a misleading or unkind way;</li>
+<li>credit “Slovenian-Australian Association Canberra” if you share them publicly.</li>
+</ul>
+<h2>5. Sending us your photos</h2>
+<p>We love receiving photos from members! When you send us photos, please make sure you took them (or have the photographer’s permission) and that the people in them would be comfortable being shared. Our <span class="legal-link" onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span> explain how we may use what you send.</p>
+</div>
+    <div class="nl-lang-sl"><p class="legal-updated">Zadnja posodobitev: 2. oktober 2026</p><p class="legal-note">Ta prevod je informativen. V primeru razhajanj velja angleška različica.</p>
+<p class="legal-lead">Fotografije so naš spomin na skupnost – plese, praznovanja, delovne akcije in ljudi. Delimo jih v Foto arhivu, glasilih in na družbenih omrežjih, da jih lahko uživajo člani in družine. Želimo pa, da se vsi počutijo prijetno, zato tako ravnamo z njimi.</p>
+<h2>1. Fotografiranje na prireditvah</h2>
+<p>Na klubskih prireditvah prostovoljci in člani pogosto fotografirajo in snemajo. Z udeležbo se zavedate, da ste lahko na fotografijah, ki jih klub deli na tej strani, v glasilih in na družbenih omrežjih. Če ne želite biti fotografirani, to na dan prireditve povejte fotografu ali članu odbora – vašo željo bomo spoštovali.</p>
+<h2>2. Otroci</h2>
+<p>Fotografije otrok delimo le s skupnostnih prireditev, kjer so prisotni ali so se strinjali starši oziroma skrbniki. Polnih imen otrok ob fotografijah ne objavljamo. Starš ali skrbnik lahko kadar koli zahteva odstranitev fotografije svojega otroka.</p>
+<h2>3. Zahteva za odstranitev fotografije</h2>
+<p>Če ste na fotografiji in želite, da jo odstranimo, pišite na <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a> z imenom prireditve in številko fotografije, ki je prikazana ob odprti fotografiji v arhivu (npr. »12 / 40«). Razloga ni treba navesti. Fotografijo bomo odstranili čim prej, običajno v nekaj dneh. Kopij, ki so jih drugi že prenesli, žal ne moremo odpoklicati.</p>
+<h2>4. Prenos fotografij iz arhiva</h2>
+<p>Fotografije iz arhiva lahko prenesete za osebni, družinski in skupnostni spomin – da jih shranite, natisnete ali delite s prijatelji. Prosimo:</p>
+<ul>
+<li>ne uporabljajte jih v komercialne namene, za oglaševanje ali prodajo;</li>
+<li>ne urejajte fotografij ljudi na zavajajoč ali neprijazen način;</li>
+<li>pri javni objavi navedite vir »Slovensko-avstralska zveza Canberra«.</li>
+</ul>
+<h2>5. Pošiljanje vaših fotografij</h2>
+<p>Fotografij članov smo vedno veseli! Ko nam jih pošljete, se prepričajte, da ste jih posneli sami (ali imate dovoljenje fotografa) in da se osebe na njih strinjajo z objavo. Kako lahko uporabimo poslano gradivo, pojasnjujejo <span class="legal-link" onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span>.</p>
+</div>
+  </div></section>
+</div>
+<div id="page-accessibility" class="page">
+  <div class="page-header"><div class="page-header-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span class="active">Accessibility</span></div>
+    <h1><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></h1><p><span class="nl-lang-en">Making this website easy for everyone to use</span><span class="nl-lang-sl">Spletna stran, prijazna do vseh</span></p>
+  </div></div>
+  <section class="section"><div class="container legal" style="max-width:820px">
+    <div class="legal-nav"><span onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span class="on" onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></div>
+    <div class="nl-lang-en"><p class="legal-updated">Last updated: 2 October 2026</p>
+<p class="legal-lead">We want everyone in our community – young and old, in English or Slovenian – to be able to use this website easily.</p>
+<h2>What we do</h2>
+<ul>
+<li>We aim to follow the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA where we can.</li>
+<li>The whole site is available in English and Slovenian using the language switch at the top of each page.</li>
+<li>Pages work on phones, tablets and computers, and you can zoom text using your browser.</li>
+<li>We use clear headings, readable text sizes and strong colour contrast.</li>
+<li>Background music can be paused or muted at any time using the music button.</li>
+</ul>
+<h2>Known limitations</h2>
+<p>We are a volunteer-run club and some parts of the site are still being improved. In particular, some photos in the Photo Archive and older newsletters do not yet have detailed descriptions for screen readers.</p>
+<h2>Need help or another format?</h2>
+<p>If you have trouble using any part of this website, or would like information in another format (for example printed or read over the phone), please contact us – we will be glad to help.</p>
+<div class="legal-contact"><strong>The Secretary</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Phone: <a href="tel:0262821083">02 6282 1083</a><br>Email: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+</div>
+    <div class="nl-lang-sl"><p class="legal-updated">Zadnja posodobitev: 2. oktober 2026</p><p class="legal-note">Ta prevod je informativen. V primeru razhajanj velja angleška različica.</p>
+<p class="legal-lead">Želimo, da lahko to spletno stran preprosto uporablja vsak član naše skupnosti – mlad ali starejši, v angleščini ali slovenščini.</p>
+<h2>Kaj smo naredili</h2>
+<ul>
+<li>Kjer je mogoče, sledimo smernicam za dostopnost spletnih vsebin (WCAG) 2.2, raven AA.</li>
+<li>Celotna stran je na voljo v angleščini in slovenščini prek stikala za jezik na vrhu strani.</li>
+<li>Stran deluje na telefonih, tablicah in računalnikih, besedilo pa lahko povečate v brskalniku.</li>
+<li>Uporabljamo jasne naslove, berljivo velikost pisave in močan barvni kontrast.</li>
+<li>Glasbo v ozadju lahko kadar koli ustavite ali utišate z gumbom za glasbo.</li>
+</ul>
+<h2>Znane omejitve</h2>
+<p>Smo klub, ki ga vodijo prostovoljci, zato nekatere dele strani še izboljšujemo. Nekatere fotografije v Foto arhivu in starejših glasilih še nimajo podrobnih opisov za bralnike zaslona.</p>
+<h2>Potrebujete pomoč ali drugo obliko?</h2>
+<p>Če imate težave z uporabo strani ali želite informacije v drugi obliki (npr. natisnjene ali po telefonu), se obrnite na nas – z veseljem bomo pomagali.</p>
+<div class="legal-contact"><strong>Tajnica</strong><br>Slovenian-Australian Association Canberra Inc<br>19 Irving Street, Phillip ACT 2606<br>Telefon: <a href="tel:0262821083">02 6282 1083</a><br>E-pošta: <a href="mailto:secretary@slovenianclubcanberra.org.au">secretary@slovenianclubcanberra.org.au</a></div>
+</div>
+  </div></section>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -5788,14 +6144,21 @@ body.lang-sl span.nl-lang-en { display: none !important; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Slovenian-Australian Association Canberra Inc</span>
+    <span>© 2026 Slovenian-Australian Association Canberra Inc · ABN 75 743 046 949</span>
     <span>19 Irving St, Phillip ACT 2606 &nbsp;·&nbsp; 02 6282 1083</span>
+  
+    <span class="footer-legal"><span onclick="showPage('privacy')"><span class="nl-lang-en">Privacy Policy</span><span class="nl-lang-sl">Politika zasebnosti</span></span><span onclick="showPage('terms')"><span class="nl-lang-en">Terms of Use</span><span class="nl-lang-sl">Pogoji uporabe</span></span><span onclick="showPage('copyright')"><span class="nl-lang-en">Copyright</span><span class="nl-lang-sl">Avtorske pravice</span></span><span onclick="showPage('photo-policy')"><span class="nl-lang-en">Photo Policy</span><span class="nl-lang-sl">Politika fotografij</span></span><span onclick="showPage('accessibility')"><span class="nl-lang-en">Accessibility</span><span class="nl-lang-sl">Dostopnost</span></span></span>
   </div>
 </footer>
 
 <script>
 
 var searchIndex = [
+  {title:'Privacy Policy',page:'privacy',k:'privacy policy personal information data formspree cookies local storage oaic access correction complaint'},
+  {title:'Terms of Use',page:'terms',k:'terms of use conditions disclaimer liability bookings membership alcohol 18 links governing law'},
+  {title:'Copyright',page:'copyright',k:'copyright rights reserved permission reuse logo photos music avsenik infringement'},
+  {title:'Photo Policy',page:'photo-policy',k:'photo policy photos consent children remove takedown archive download'},
+  {title:'Accessibility',page:'accessibility',k:'accessibility wcag screen reader alternative format help'},
   {title:'Home',page:'home',k:'home welcome slovenian club canberra community 1964'},
   {title:'Welcome',page:'welcome',k:'welcome community heritage hall hire association'},
   {title:'Meet Our Committee',page:'committee',k:'committee natasha alojz henry fred daryl bella deb grahame nimmo president secretary vice maintenance public officer'},
@@ -6509,6 +6872,10 @@ document.addEventListener('DOMContentLoaded', function() {
 var currentLang = 'en';
 
 var slTranslations = {
+  'Accessibility': 'Dostopnost',
+  'Photo Policy': 'Politika fotografij',
+  'Copyright': 'Avtorske pravice',
+  'Terms of Use': 'Pogoji uporabe',
   'Sips of Slovenia': 'Požirki Slovenije',
   '🇸🇮 Slovenian Drinks →': '🇸🇮 Slovenske pijače →',
   '🇸🇮 Sips of Slovenia →': '🇸🇮 Požirki Slovenije →',
