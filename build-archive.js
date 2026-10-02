@@ -5,6 +5,7 @@
  * Put each event's photos in its own folder:
  *   archive/photos/2025-12-06 Miklavz/
  *   archive/photos/2025-11-04 Melbourne Cup/
+ * info.txt: line 1 = title; optional lines "sl: Slovenian title" and "cover: photo-file-name.jpg"
  *
  * Folder name = date (YYYY-MM-DD, YYYY-MM or YYYY) + event name.
  * Optional in a folder:
@@ -72,15 +73,18 @@ function loadEvents() {
       let title = meta.title.replace(/[_]+/g, ' ').trim();
       let description = '';
       let titleSl = SL_TITLES[d.name.toLowerCase()] || '';
+      let coverPick = '';
       const info = path.join(dir, 'info.txt');
       if (fs.existsSync(info)) {
         const lines = fs.readFileSync(info, 'utf8').split(/\r?\n/);
         if (lines[0].trim()) title = lines[0].trim();
         const slLine = lines.slice(1).find(l => /^sl\s*:/i.test(l.trim()));
         if (slLine) titleSl = slLine.replace(/^\s*sl\s*:\s*/i, '').trim();
-        description = lines.slice(1).filter(l => l !== slLine).join('\n').trim();
+        const coverLine = lines.slice(1).find(l => /^cover\s*:/i.test(l.trim()));
+        if (coverLine) coverPick = coverLine.replace(/^\s*cover\s*:\s*/i, '').trim();
+        description = lines.slice(1).filter(l => l !== slLine && l !== coverLine).join('\n').trim();
       }
-      const coverFile = files.find(f => /^cover\.(jpe?g|png|webp)$/i.test(f)) || files[0];
+      const coverFile = (coverPick && files.includes(coverPick) ? coverPick : null) || files.find(f => /^cover\.(jpe?g|png|webp)$/i.test(f)) || files[0];
       let slug = slugify(d.name); let n = 2;
       while (used.has(slug) || slug === 'index') slug = `${slugify(d.name)}-${n++}`;
       used.add(slug);
