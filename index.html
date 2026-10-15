@@ -2649,14 +2649,14 @@ body.lang-sl span.nl-lang-en { display: none !important; }
         <div class="mem-fees">
           <div class="mem-fees-title">Membership fees</div>
           <table>
-            <thead><tr><th></th><th>Life</th><th>Full</th><th>Associate</th></tr></thead>
+            <thead><tr><th></th><th>Full</th><th>Associate</th></tr></thead>
             <tbody>
-              <tr><td>Application fee</td><td>$2.00</td><td>$2.00</td><td>$2.00</td></tr>
-              <tr><td>Annual membership</td><td>N/A</td><td>$10.00</td><td>$3.00</td></tr>
-              <tr><td>Building fund</td><td>$500.00</td><td>$300.00</td><td>N/A</td></tr>
+              <tr><td>Application fee</td><td>$2.00</td><td>$2.00</td></tr>
+              <tr><td>Annual membership</td><td>$10.00</td><td>$3.00</td></tr>
+              <tr><td>Building fund</td><td>$300.00</td><td>N/A</td></tr>
             </tbody>
           </table>
-          <p class="mem-fees-note">Life and Full applications need two seconders who are Life or Full members, and are considered by the committee.</p>
+          <p class="mem-fees-note">Full membership applications need two seconders who are Life or Full members, and are considered by the committee.</p>
         </div>
         <div class="mem-paper">
           <div style="font-size:30px">📄</div>
@@ -2683,10 +2683,11 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           </div>
           <form id="member-form-el" action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleMembershipSubmit(event)">
             <input type="hidden" name="_subject" value="Membership Application — slovenianclubcanberra.org.au">
+            <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
             <p class="mem-intro">To the Secretary — I wish to apply for membership of the Association and supply the following details:</p>
 
             <div class="mem-section">Type of membership</div>
-            <div class="check-group" style="margin-bottom:8px"><label class="check-item"><input type="radio" name="membership_type" value="Life member ($502: $2 application + $500 building fund)" data-type="life" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Life member</strong><span class="price">$502</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $500 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Full member ($312: $2 application + $10 annual + $300 building fund)" data-type="full" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Full member</strong><span class="price">$312</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $10 annual + $300 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Associate member ($5: $2 application + $3 annual)" data-type="associate" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Associate member</strong><span class="price">$5</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $3 annual</small></span></label></div>
+            <div class="check-group" style="margin-bottom:8px"><label class="check-item"><input type="radio" name="membership_type" value="Full member ($312: $2 application + $10 annual + $300 building fund)" data-type="full" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Full member</strong><span class="price">$312</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $10 annual + $300 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Associate member ($5: $2 application + $3 annual)" data-type="associate" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Associate member</strong><span class="price">$5</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $3 annual</small></span></label></div>
 
             <div class="mem-section">Your details</div>
             <div class="form-row"><div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="surname" required></div><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div></div>
@@ -2736,6 +2737,10 @@ body.lang-sl span.nl-lang-en { display: none !important; }
             <div id="member-success-full" style="display:none">
               <p style="font-size:14px;color:#1a4a2e;line-height:1.75;margin-bottom:10px">Thank you for applying. Your application will be considered by the committee, and your seconders will be asked to confirm and sign.</p>
               <p style="font-size:14px;color:#1a4a2e;line-height:1.75"><strong>Please do not make any payment yet.</strong> A member of the committee will be in touch with the next steps and payment details.</p>
+            </div>
+            <div id="member-pdf-box" style="display:none;margin-top:18px;padding-top:16px;border-top:1px solid #a3d9b1">
+              <p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:12px">Your answers have been filled into the club's official membership form. Download a copy for your records, or print it for your seconders to sign.</p>
+              <a id="member-pdf-link" class="mem-paper-btn" href="#" download="SAA-Membership-Application.pdf">⬇ Download my completed form (PDF)</a>
             </div>
           </div>
         </div>
@@ -6319,18 +6324,45 @@ function handleMembershipSubmit(e) {
   var type = picked ? picked.getAttribute('data-type') : '';
   var subj = form.querySelector('input[name=_subject]');
   if (subj && picked) subj.value = 'Membership Application (' + picked.value.split(' (')[0] + ') — slovenianclubcanberra.org.au';
-  if (btn) btn.disabled = true;
-  fetch(form.action, {method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}})
-    .then(function (r) {
-      if (!r.ok) throw 0;
-      form.style.display = 'none';
-      document.getElementById('member-success').style.display = 'block';
-      document.getElementById('member-success-assoc').style.display = type === 'associate' ? 'block' : 'none';
-      document.getElementById('member-success-full').style.display = type === 'associate' ? 'none' : 'block';
-      document.getElementById('member-success').scrollIntoView({behavior: 'smooth', block: 'center'});
+  var fd = new FormData(form), data = {};
+  fd.forEach(function (v, k) { if (typeof v === 'string') data[k] = v; });
+  data.member_type = type;
+  var label = btn ? btn.innerHTML : '';
+  if (btn) { btn.disabled = true; btn.textContent = T('Preparing your form…'); }
+  var pdfBytes = null;
+
+  function done() {
+    form.style.display = 'none';
+    document.getElementById('member-success').style.display = 'block';
+    document.getElementById('member-success-assoc').style.display = type === 'associate' ? 'block' : 'none';
+    document.getElementById('member-success-full').style.display = type === 'associate' ? 'none' : 'block';
+    if (pdfBytes) {
+      var url = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
+      var link = document.getElementById('member-pdf-link');
+      link.href = url;
+      link.setAttribute('download', 'SAA-Membership-Application-' + ((data.first_name || '') + '-' + (data.surname || '')).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9]+/g, '-') + '.pdf');
+      document.getElementById('member-pdf-box').style.display = 'block';
+    }
+    document.getElementById('member-success').scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+  function viaFormspree() {   // backup route if the club's mail script is unavailable
+    return fetch(form.action, {method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}})
+      .then(function (r) { if (!r.ok) throw 0; });
+  }
+
+  (window.saaBuildMembershipPdf ? window.saaBuildMembershipPdf(data) : Promise.reject())
+    .then(function (bytes) { pdfBytes = bytes; }, function () { pdfBytes = null; })
+    .then(function () {
+      if (btn) btn.textContent = T('Sending…');
+      var send = new FormData(form);
+      if (pdfBytes) send.append('form_pdf', new Blob([pdfBytes], {type: 'application/pdf'}), 'membership-application.pdf');
+      return fetch('membership-submit.php', {method: 'POST', body: send})
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw 0; }); })
+        .catch(viaFormspree);
     })
+    .then(done)
     .catch(function () { alert(T('There was an error submitting your form. Please try again or contact us directly.')); })
-    .then(function () { if (btn) btn.disabled = false; });
+    .then(function () { if (btn) { btn.disabled = false; btn.innerHTML = label; } });
 }
 
 function selectRenewalType(type) {
@@ -7845,6 +7877,11 @@ function _isInsideSLBlock(node) {
 
 // Whole-text translations (exact match only — safe for short words like "Hall")
 var slExact = {
+"Preparing your form…": "Pripravljam obrazec …",
+"Sending…": "Pošiljam …",
+"Full membership applications need two seconders who are Life or Full members, and are considered by the committee.": "Prijave za redno članstvo morata podpreti dva dosmrtna ali redna člana, o njih pa odloča odbor.",
+"Your answers have been filled into the club's official membership form. Download a copy for your records, or print it for your seconders to sign.": "Vaši odgovori so vpisani v uradno pristopnico kluba. Prenesite kopijo zase ali jo natisnite, da jo podpišeta podpornika.",
+"⬇ Download my completed form (PDF)": "⬇ Prenesi moj izpolnjen obrazec (PDF)",
 "Membership fees": "Članarine",
 "Life": "Dosmrtni",
 "Full": "Redni",
@@ -9603,5 +9640,6 @@ function anaGetReplySL(q) {
 
 </script>
 
+<script src="js/membership-pdf.js" defer></script>
 </body>
 </html>

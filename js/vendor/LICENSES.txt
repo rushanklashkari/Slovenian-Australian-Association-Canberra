@@ -1,0 +1,3 @@
+pdf-lib 1.17.1 — MIT License, Copyright (c) 2019 Andrew Dillon — https://github.com/Hopding/pdf-lib
+@pdf-lib/fontkit 1.1.1 — MIT License — https://github.com/Hopding/fontkit
+fonts/form-sans-*.ttf — subset of Liberation Sans — SIL Open Font License 1.1
