@@ -573,6 +573,38 @@ body.lang-sl span.nl-lang-en { display: none !important; }
 .footer-bottom{padding-bottom:80px}
 .form-privacy-note{font-size:12px;line-height:1.5;opacity:.8;margin-top:10px}
 .form-privacy-note span.lk{text-decoration:underline;cursor:pointer}
+
+/* ── MEMBERSHIP FORM (matches the paper form) */
+.mem-fees{background:var(--blue-pale);border:1px solid var(--border-light);border-radius:12px;padding:20px 22px;margin-bottom:16px}
+.mem-fees-title{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.mem-fees table{width:100%;border-collapse:collapse;font-size:13px}
+.mem-fees th{font-family:'Playfair Display',serif;color:var(--blue);font-size:14px;text-align:right;padding:6px 4px;border-bottom:2px solid var(--gold)}
+.mem-fees td{padding:7px 4px;border-bottom:1px solid var(--border-light);text-align:right;color:var(--text-mid)}
+.mem-fees td:first-child,.mem-fees th:first-child{text-align:left}
+.mem-fees td:first-child{font-weight:600;color:var(--blue)}
+.mem-fees-note{font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-top:10px}
+.mem-paper{display:flex;gap:14px;background:#fff;border:1px dashed var(--gold);border-radius:12px;padding:18px 20px}
+.mem-paper-title{font-weight:700;color:var(--blue);margin-bottom:4px}
+.mem-paper p{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:10px}
+.mem-paper-btn{display:inline-block;background:var(--blue);color:#fff;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none}
+.mem-paper-btn:hover{opacity:.9}
+.mem-form-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--gold);padding-bottom:12px;margin-bottom:16px}
+.mem-form-org{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted)}
+.mem-form-head h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--blue);margin-top:2px}
+.mem-paper-link{font-size:13px;font-weight:600;color:var(--blue-mid);text-decoration:underline;text-underline-offset:2px}
+.mem-intro{font-size:14px;color:var(--text-mid);line-height:1.6;margin-bottom:6px}
+.mem-section{font-family:'Playfair Display',serif;font-size:17px;color:var(--blue);margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border-light)}
+.mem-yn{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--border-light);font-size:14px;color:var(--text-mid)}
+.mem-yn span{flex:1;min-width:200px}
+@media (max-width:600px){.mem-yn span{flex:1 1 100%}.mem-yn{gap:8px 20px}}
+.mem-yn label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;color:var(--blue)}
+.mem-yn input{width:auto;accent-color:var(--blue)}
+.mem-sec-help{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:10px}
+.mem-seconder{background:var(--blue-pale);border-radius:10px;padding:14px 16px 4px;margin-bottom:12px}
+.mem-sec-title{font-weight:700;color:var(--blue);font-size:14px}
+.mem-sec-text{font-size:12.5px;color:var(--text-muted);margin:2px 0 8px}
+.mem-declare{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-mid);line-height:1.5;margin-bottom:14px;cursor:pointer}
+.mem-declare input{width:auto;margin-top:3px;accent-color:var(--blue)}
 </style>
 </head>
 <body>
@@ -2613,15 +2645,25 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <a href="https://www.sloveneassociationsydney.com/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#1a1a1a;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Visit Slovene Association Sydney ↗</a>
         </div>
 
-        <div style="background:var(--blue-pale);border:1px solid var(--border-light);border-radius:12px;padding:22px;margin-bottom:16px">
-          <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">Associate Member</div>
-          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--blue);margin-bottom:8px">$5 per year</div>
-          <p style="font-size:13px;color:var(--text-muted);line-height:1.7">Open to anyone with an interest in Slovenian culture. Submit your application and pay $5 — your membership is active immediately.</p>
+        <div class="mem-fees">
+          <div class="mem-fees-title">Membership fees</div>
+          <table>
+            <thead><tr><th></th><th>Life</th><th>Full</th><th>Associate</th></tr></thead>
+            <tbody>
+              <tr><td>Application fee</td><td>$2.00</td><td>$2.00</td><td>$2.00</td></tr>
+              <tr><td>Annual membership</td><td>N/A</td><td>$10.00</td><td>$3.00</td></tr>
+              <tr><td>Building fund</td><td>$500.00</td><td>$300.00</td><td>N/A</td></tr>
+            </tbody>
+          </table>
+          <p class="mem-fees-note">Life and Full applications need two seconders who are Life or Full members, and are considered by the committee.</p>
         </div>
-        <div style="background:var(--blue-pale);border:1px solid var(--border-light);border-radius:12px;padding:22px">
-          <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">Ordinary / Full Member</div>
-          <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--blue);margin-bottom:8px">Application required</div>
-          <p style="font-size:13px;color:var(--text-muted);line-height:1.7">Full membership requires approval by the committee. Submit your application and our committee will reach out with next steps once approved.</p>
+        <div class="mem-paper">
+          <div style="font-size:22px">📄</div>
+          <div>
+            <div class="mem-paper-title">Prefer paper?</div>
+            <p>Download the membership form, print it, sign it with your two seconders and hand it in at the Club or email a scan to the secretary.</p>
+            <a class="mem-paper-btn" href="documents/SAA-Membership-Form-2026.pdf" target="_blank" download>⬇ Download membership form (PDF)</a>
+          </div>
         </div>
       </div>
       <div>
@@ -2630,35 +2672,58 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <button class="tab-btn" id="tab-renew" onclick="switchTab('renew')">Renew</button>
         </div>
         <div id="form-new">
-          <div style="margin-bottom:24px">
-            <p style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px">Select membership type <span class="req">*</span></p>
-            <div class="check-group">
-              <label class="check-item" onclick="selectMemberType('associate')"><input type="radio" name="display_type" value="associate" id="radio-associate"><span class="check-label"><strong>Associate member</strong><span class="price">$5/year</span><br><small style="color:var(--text-muted);font-size:12px">Open to all — active immediately upon payment</small></span></label>
-              <label class="check-item" onclick="selectMemberType('ordinary')"><input type="radio" name="display_type" value="ordinary" id="radio-ordinary"><span class="check-label"><strong>Ordinary / Full member</strong><span class="price">Application required</span><br><small style="color:var(--text-muted);font-size:12px">Requires committee approval — we will contact you</small></span></label>
+          <div class="mem-form-head">
+            <div>
+              <div class="mem-form-org">Slovensko avstralsko društvo Canberra · Slovenian Australian Association Canberra, Incorporated</div>
+              <h3>Application for membership</h3>
             </div>
+            <a class="mem-paper-link" href="documents/SAA-Membership-Form-2026.pdf" target="_blank" download>📄 Prefer paper? Download the form</a>
           </div>
-          <div id="associate-form" style="display:none">
-            <div class="form-intro"><strong>Associate membership — $5/year.</strong> Complete the form below. Payment details will appear after submission.</div>
-            <div class="notice">Applicant must be over 18 years of age.</div>
-            <form id="assoc-form-el" action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleAssociateSubmit(event)">
-        <input type="hidden" name="_next" value="https://slovenianclubcanberra.org.au/#home">
-              <input type="hidden" name="_subject" value="New Associate Member Application">
-              <input type="hidden" name="membership_type" value="Associate Member - $5/year">
-              <div class="form-row"><div class="form-group"><label>Prefix</label><select name="prefix"><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Mx.</option><option>Dr.</option></select></div><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div></div>
-              <div class="form-row"><div class="form-group"><label>Middle name</label><input type="text" name="middle_name"></div><div class="form-group"><label>Last name <span class="req">*</span></label><input type="text" name="last_name" required></div></div>
-              <div class="form-group"><label>Street address <span class="req">*</span></label><input type="text" name="address" required></div>
-              <div class="form-row-3"><div class="form-group"><label>City</label><input type="text" name="city" value="Canberra"></div><div class="form-group"><label>State</label><input type="text" name="state" value="ACT"></div><div class="form-group"><label>Postcode</label><input type="text" name="postcode"></div></div>
-              <div class="form-row"><div class="form-group"><label>Mobile</label><input type="tel" name="mobile"></div><div class="form-group"><label>Home phone</label><input type="tel" name="phone"></div></div>
-              <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
-              <div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
-              <div class="form-group"><label>Slovenian language ability</label><select name="language"><option value="0">0 - No knowledge</option><option value="1">1 - Some understanding</option><option value="2">2 - Understand well</option><option value="3">3 - Speak some</option><option value="4">4 - Fluent</option></select></div>
-              <button type="submit" class="submit-btn">Submit application</button>
+          <form id="member-form-el" action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleMembershipSubmit(event)">
+            <input type="hidden" name="_subject" value="Membership Application — slovenianclubcanberra.org.au">
+            <p class="mem-intro">To the Secretary — I wish to apply for membership of the Association and supply the following details:</p>
+
+            <div class="mem-section">Type of membership</div>
+            <div class="check-group" style="margin-bottom:8px"><label class="check-item"><input type="radio" name="membership_type" value="Life member ($502: $2 application + $500 building fund)" data-type="life" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Life member</strong><span class="price">$502</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $500 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Full member ($312: $2 application + $10 annual + $300 building fund)" data-type="full" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Full member</strong><span class="price">$312</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $10 annual + $300 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Associate member ($5: $2 application + $3 annual)" data-type="associate" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Associate member</strong><span class="price">$5</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $3 annual</small></span></label></div>
+
+            <div class="mem-section">Your details</div>
+            <div class="form-row"><div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="surname" required></div><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div></div>
+            <div class="form-row"><div class="form-group"><label>Other names</label><input type="text" name="other_names"></div><div class="form-group"><label>Title</label><select name="title" onchange="document.getElementById('mem-title-other').style.display=this.value==='Other'?'block':'none'"><option value="">Select…</option><option>Mr.</option><option>Mrs.</option><option>Ms</option><option>Dr</option><option>Other</option></select><input type="text" id="mem-title-other" name="title_other" placeholder="Please specify" style="display:none;margin-top:8px"></div></div>
+            <div class="form-row"><div class="form-group"><label>Street <span class="req">*</span></label><input type="text" name="street" required></div><div class="form-group"><label>Suburb</label><input type="text" name="suburb"></div></div>
+            <div class="form-row-3"><div class="form-group"><label>City</label><input type="text" name="city" value="Canberra"></div><div class="form-group"><label>State</label><input type="text" name="state" value="ACT"></div><div class="form-group"><label>Postcode</label><input type="text" name="postcode" inputmode="numeric"></div></div>
+            <div class="form-row-3"><div class="form-group"><label>Phone home</label><input type="tel" name="phone_home"></div><div class="form-group"><label>Phone work</label><input type="tel" name="phone_work"></div><div class="form-group"><label>Phone mobile <span class="req">*</span></label><input type="tel" name="phone_mobile" required></div></div>
+            <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+
+            <div class="mem-section">Personal details</div>
+            <div class="form-row"><div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="date_of_birth" required></div><div class="form-group"><label>Country of birth</label><input type="text" name="country_of_birth"></div></div>
+            <div class="mem-yn"><span>One or both parents Slovenian</span><label><input type="radio" name="parents_slovenian" value="Yes"> Yes</label><label><input type="radio" name="parents_slovenian" value="No"> No</label></div>
+            <div class="mem-yn"><span>One or both grandparents Slovenian</span><label><input type="radio" name="grandparents_slovenian" value="Yes"> Yes</label><label><input type="radio" name="grandparents_slovenian" value="No"> No</label></div>
+
+            <div class="mem-section">Seconders</div>
+            <p class="mem-sec-help">Your application must be seconded by two Life or Full members of the Association. Enter their details below — they will be asked to confirm and sign. If you don't know any members yet, leave this blank and the committee will help.</p>
+            <div class="mem-seconder">
+                <div class="mem-sec-title">First seconder</div>
+                <p class="mem-sec-text">I am a life member or full member of the Association and have known the applicant and support the application.</p>
+                <div class="form-row-3"><div class="form-group"><label>Name</label><input type="text" name="seconder1_name"></div><div class="form-group"><label>Badge No</label><input type="text" name="seconder1_badge"></div><div class="form-group"><label>Years known</label><input type="number" min="0" name="seconder1_years_known"></div></div>
+              </div>
+            <div class="mem-seconder">
+                <div class="mem-sec-title">Second seconder</div>
+                <p class="mem-sec-text">I am a life member or full member of the Association and have known the applicant and support the application.</p>
+                <div class="form-row-3"><div class="form-group"><label>Name</label><input type="text" name="seconder2_name"></div><div class="form-group"><label>Badge No</label><input type="text" name="seconder2_badge"></div><div class="form-group"><label>Years known</label><input type="number" min="0" name="seconder2_years_known"></div></div>
+              </div>
+
+            <div class="mem-section">Declaration</div>
+            <label class="mem-declare"><input type="checkbox" name="declaration" value="Agreed" required> <span>If my application is accepted I agree to abide by the rules of the Association. <span class="req">*</span></span></label>
+            <div class="form-row"><div class="form-group"><label>Signed (type your full name) <span class="req">*</span></label><input type="text" name="signed_name" required></div><div class="form-group"><label>Date</label><input type="date" name="date_signed" id="mem-date-signed"></div></div>
+
+            <button type="submit" class="submit-btn">Submit application</button>
             <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
-</form>
-            <div id="assoc-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
-              <div style="font-size:24px;margin-bottom:8px">✅</div>
-              <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Application received!</h3>
-              <p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:16px">Thank you for applying. To complete your Associate membership, please transfer <strong>$5</strong> to:</p>
+          </form>
+          <div id="member-success" style="display:none;margin-top:8px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
+            <div style="font-size:24px;margin-bottom:8px">✅</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Application received!</h3>
+            <div id="member-success-assoc" style="display:none">
+              <p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:16px">Thank you for applying. To complete your Associate membership, please transfer <strong>$5</strong> ($2 application fee + $3 annual membership) to:</p>
               <div style="background:white;border-radius:8px;padding:16px;font-size:14px">
                 <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:140px;color:var(--blue)">Account name</span><span>Slovenian-Australian Association Canberra Inc</span></div>
                 <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:140px;color:var(--blue)">BSB</span><span>082 902</span></div>
@@ -2666,28 +2731,9 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               </div>
               <p style="font-size:13px;color:#2d6a4f;margin-top:14px">Please use your full name as the payment reference.</p>
             </div>
-          </div>
-          <div id="ordinary-form" style="display:none">
-            <div class="form-intro"><strong>Ordinary / Full membership.</strong> Your application will be reviewed by the committee. Do not make any payment until you receive approval from us.</div>
-            <div class="notice">Applicant must be over 18 years of age. Approval by existing membership is required.</div>
-            <form action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleOrdinarySubmit(event)">
-        <input type="hidden" name="_next" value="https://slovenianclubcanberra.org.au/#home">
-              <input type="hidden" name="_subject" value="New Ordinary Member Application - Pending Approval">
-              <input type="hidden" name="membership_type" value="Ordinary Member - Pending Committee Approval">
-              <div class="form-row"><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div><div class="form-group"><label>Last name <span class="req">*</span></label><input type="text" name="last_name" required></div></div>
-              <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
-              <div class="form-group"><label>Mobile <span class="req">*</span></label><input type="tel" name="mobile" required></div>
-              <div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
-              <div class="form-group"><label>Why would you like to become a full member? <span class="req">*</span></label><textarea name="reason" required placeholder="Tell us a little about yourself and your connection to the Slovenian community..." style="min-height:100px"></textarea></div>
-              <div class="form-group"><label>Connection to the Slovenian community</label><input type="text" name="connection" placeholder="e.g. Slovenian heritage, spouse/partner, community interest..."></div>
-              <button type="submit" class="submit-btn">Submit application</button>
-            <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
-</form>
-            <div id="ordinary-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
-              <div style="font-size:24px;margin-bottom:8px">✅</div>
-              <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Application received!</h3>
-              <p style="font-size:14px;color:#1a4a2e;line-height:1.75;margin-bottom:10px">Thank you for your interest in becoming a full member. Your application will be reviewed by our committee and existing members.</p>
-              <p style="font-size:14px;color:#1a4a2e;line-height:1.75"><strong>Please do not make any payment at this stage.</strong> A member of our committee will be in touch with you shortly to discuss your application and next steps.</p>
+            <div id="member-success-full" style="display:none">
+              <p style="font-size:14px;color:#1a4a2e;line-height:1.75;margin-bottom:10px">Thank you for applying. Your application will be considered by the committee, and your seconders will be asked to confirm and sign.</p>
+              <p style="font-size:14px;color:#1a4a2e;line-height:1.75"><strong>Please do not make any payment yet.</strong> A member of the committee will be in touch with the next steps and payment details.</p>
             </div>
           </div>
         </div>
@@ -6257,11 +6303,32 @@ function switchTab(t) {
   document.getElementById('tab-renew').classList.toggle('active', t === 'renew');
 }
 
-function selectMemberType(type) {
-  document.getElementById('associate-form').style.display = type === 'associate' ? 'block' : 'none';
-  document.getElementById('ordinary-form').style.display = type === 'ordinary' ? 'block' : 'none';
-  document.getElementById('assoc-success').style.display = 'none';
-  document.getElementById('ordinary-success').style.display = 'none';
+function memTypeChanged(el) {
+  var s = document.getElementById('member-success'); if (s) s.style.display = 'none';
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var d = document.getElementById('mem-date-signed');
+  if (d && !d.value) { var t = new Date(); d.value = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+});
+function handleMembershipSubmit(e) {
+  e.preventDefault();
+  var form = e.target, btn = form.querySelector('button[type=submit]');
+  var picked = form.querySelector('input[name=membership_type]:checked');
+  var type = picked ? picked.getAttribute('data-type') : '';
+  var subj = form.querySelector('input[name=_subject]');
+  if (subj && picked) subj.value = 'Membership Application (' + picked.value.split(' (')[0] + ') — slovenianclubcanberra.org.au';
+  if (btn) btn.disabled = true;
+  fetch(form.action, {method: 'POST', body: new FormData(form), headers: {'Accept': 'application/json'}})
+    .then(function (r) {
+      if (!r.ok) throw 0;
+      form.style.display = 'none';
+      document.getElementById('member-success').style.display = 'block';
+      document.getElementById('member-success-assoc').style.display = type === 'associate' ? 'block' : 'none';
+      document.getElementById('member-success-full').style.display = type === 'associate' ? 'none' : 'block';
+      document.getElementById('member-success').scrollIntoView({behavior: 'smooth', block: 'center'});
+    })
+    .catch(function () { alert(T('There was an error submitting your form. Please try again or contact us directly.')); })
+    .then(function () { if (btn) btn.disabled = false; });
 }
 
 function selectRenewalType(type) {
@@ -6269,39 +6336,7 @@ function selectRenewalType(type) {
   if (hidden) hidden.value = type === 'associate' ? 'Associate Member - $5/year' : 'Ordinary Member - $10/year';
 }
 
-function handleAssociateSubmit(e) {
-  e.preventDefault();
-  var form = document.getElementById('assoc-form-el');
-  var data = new FormData(form);
-  fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}})
-    .then(function(r) {
-      if (r.ok) {
-        form.style.display = 'none';
-        document.getElementById('assoc-success').style.display = 'block';
-      } else {
-        alert(T('There was an error submitting your form. Please try again or contact us directly.'));
-      }
-    }).catch(function() {
-      alert(T('There was an error submitting your form. Please try again or contact us directly.'));
-    });
-}
 
-function handleOrdinarySubmit(e) {
-  e.preventDefault();
-  var form = e.target;
-  var data = new FormData(form);
-  fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}})
-    .then(function(r) {
-      if (r.ok) {
-        form.style.display = 'none';
-        document.getElementById('ordinary-success').style.display = 'block';
-      } else {
-        alert(T('There was an error submitting your form. Please try again or contact us directly.'));
-      }
-    }).catch(function() {
-      alert(T('There was an error submitting your form. Please try again or contact us directly.'));
-    });
-}
 
 function handleRenewalSubmit(e) {
   e.preventDefault();
@@ -7808,6 +7843,71 @@ function _isInsideSLBlock(node) {
 
 // Whole-text translations (exact match only — safe for short words like "Hall")
 var slExact = {
+"Membership fees": "Članarine",
+"Life": "Dosmrtni",
+"Full": "Redni",
+"Associate": "Pridruženi",
+"Application fee": "Pristopnina",
+"Annual membership": "Letna članarina",
+"Building fund": "Gradbeni sklad",
+"Life and Full applications need two seconders who are Life or Full members, and are considered by the committee.": "Prijave za dosmrtno in redno članstvo morata podpreti dva dosmrtna ali redna člana, o njih pa odloča odbor.",
+"Prefer paper?": "Vam je ljubši papir?",
+"Download the membership form, print it, sign it with your two seconders and hand it in at the Club or email a scan to the secretary.": "Prenesite pristopnico, jo natisnite, podpišite skupaj z dvema podpornikoma in oddajte v klubu ali skenirano pošljite tajnici.",
+"⬇ Download membership form (PDF)": "⬇ Prenesi pristopnico (PDF)",
+"Slovensko avstralsko društvo Canberra · Slovenian Australian Association Canberra, Incorporated": "Slovensko avstralsko društvo Canberra · Slovenian Australian Association Canberra, Incorporated",
+"Application for membership": "Pristopna izjava",
+"📄 Prefer paper? Download the form": "📄 Vam je ljubši papir? Prenesite obrazec",
+"To the Secretary — I wish to apply for membership of the Association and supply the following details:": "Tajnici — želim postati član društva in navajam naslednje podatke:",
+"Type of membership": "Vrsta članstva",
+"Your details": "Vaši podatki",
+"Personal details": "Osebni podatki",
+"Seconders": "Podporniki",
+"Declaration": "Izjava",
+"Life member": "Dosmrtni član",
+"Full member": "Redni član",
+"Associate member": "Pridruženi član",
+"$2 application + $500 building fund": "2 $ pristopnina + 500 $ gradbeni sklad",
+"$2 application + $10 annual + $300 building fund": "2 $ pristopnina + 10 $ letna članarina + 300 $ gradbeni sklad",
+"$2 application + $3 annual": "2 $ pristopnina + 3 $ letna članarina",
+"Surname": "Priimek",
+"First name": "Ime",
+"Other names": "Druga imena",
+"Title": "Naziv",
+"Select…": "Izberite …",
+"Other": "Drugo",
+"Please specify": "Navedite",
+"Street": "Ulica",
+"Suburb": "Predmestje",
+"City": "Mesto",
+"State": "Zvezna država",
+"Postcode": "Poštna številka",
+"Phone home": "Telefon doma",
+"Phone work": "Telefon v službi",
+"Phone mobile": "Mobilni telefon",
+"Email": "E-pošta",
+"Date of birth": "Datum rojstva",
+"Country of birth": "Država rojstva",
+"One or both parents Slovenian": "Eden ali oba starša sta Slovenca",
+"One or both grandparents Slovenian": "Eden ali več starih staršev je Slovencev",
+"Yes": "Da",
+"No": "Ne",
+"Your application must be seconded by two Life or Full members of the Association. Enter their details below — they will be asked to confirm and sign. If you don't know any members yet, leave this blank and the committee will help.": "Vašo prijavo morata podpreti dva dosmrtna ali redna člana društva. Spodaj vpišite njune podatke — prosili ju bomo za potrditev in podpis. Če še ne poznate nobenega člana, pustite prazno in odbor vam bo pomagal.",
+"First seconder": "Prvi podpornik",
+"Second seconder": "Drugi podpornik",
+"I am a life member or full member of the Association and have known the applicant and support the application.": "Sem dosmrtni ali redni član društva, prosilca poznam in podpiram njegovo prijavo.",
+"Name": "Ime in priimek",
+"Badge No": "Št. značke",
+"Years known": "Let poznanstva",
+"If my application is accepted I agree to abide by the rules of the Association.": "Če bo moja prijava sprejeta, se zavezujem spoštovati pravila društva.",
+"Signed (type your full name)": "Podpis (vpišite polno ime)",
+"Date": "Datum",
+"Submit application": "Oddaj prijavo",
+"Application received!": "Prijava prejeta!",
+"Thank you for applying. To complete your Associate membership, please transfer": "Hvala za prijavo. Za dokončanje pridruženega članstva nakažite",
+"($2 application fee + $3 annual membership) to:": "(2 $ pristopnina + 3 $ letna članarina) na:",
+"Thank you for applying. Your application will be considered by the committee, and your seconders will be asked to confirm and sign.": "Hvala za prijavo. O vaši prijavi bo odločal odbor, vaša podpornika pa bomo prosili za potrditev in podpis.",
+"Please do not make any payment yet.": "Prosimo, ne plačujte še ničesar.",
+"A member of the committee will be in touch with the next steps and payment details.": "Član odbora vas bo kontaktiral z nadaljnjimi koraki in podatki za plačilo.",
 "History Triglav": "Zgodovina — Triglav",
 "Events 2026": "Dogodki 2026",
 "Sponsorships Donations": "Sponzorstva in donacije",
