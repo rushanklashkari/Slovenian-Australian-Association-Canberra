@@ -23,6 +23,7 @@ $ref = $_SERVER['HTTP_ORIGIN'] ?? ($_SERVER['HTTP_REFERER'] ?? '');
 if ($ref !== '' && stripos($ref, 'slovenianclubcanberra.org.au') === false && stripos($ref, 'localhost') === false) out(false, 403, 'Bad origin');
 
 $fields = [
+  'application_kind' => 'Application', 'member_no' => 'Member / Badge No',
   'membership_type' => 'Type of membership',
   'surname' => 'Surname', 'first_name' => 'First name', 'other_names' => 'Other names',
   'title' => 'Title', 'title_other' => 'Title (other)',
@@ -52,12 +53,14 @@ if (!empty($_FILES['form_pdf']) && $_FILES['form_pdf']['error'] === UPLOAD_ERR_O
 
 $name = trim($d['first_name'] . ' ' . $d['surname']);
 $type = preg_replace('/\s*\(.*$/', '', $d['membership_type']);
-$subject = 'Membership application – ' . $name . ' (' . $type . ')';
+$type = preg_replace('/\s+—.*$/u', '', $type);
+$isRenew = ($d['application_kind'] === 'Renewal');
+$subject = ($isRenew ? 'Membership renewal – ' : 'Membership application – ') . $name . ' (' . $type . ')';
 
-$lines = ["New membership application from the website.", ""];
+$lines = [($isRenew ? "Membership renewal from the website." : "New membership application from the website."), ""];
 foreach ($fields as $k => $label) if ($d[$k] !== '') $lines[] = str_pad($label . ':', 36) . $d[$k];
 $lines[] = '';
-$lines[] = $pdf ? 'The completed membership form is attached as a PDF. Seconders still need to sign it.'
+$lines[] = $pdf ? ($isRenew ? 'The completed membership form (marked RENEWAL) is attached as a PDF.' : 'The completed membership form is attached as a PDF. Seconders still need to sign it.')
                 : 'Note: the PDF could not be created in the applicant\'s browser — details are above.';
 $lines[] = 'Reply to this email to contact the applicant.';
 $text = implode("\r\n", $lines);
@@ -72,7 +75,7 @@ $body  = "--$boundary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Tran
 $body .= chunk_split(base64_encode($text)) . "\r\n";
 if ($pdf) {
   $ascii = function_exists('iconv') ? (iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $name) ?: $name) : $name;
-  $file = 'SAA-Membership-Application-' . trim(preg_replace('/[^A-Za-z0-9]+/', '-', $ascii), '-') . '.pdf';
+  $file = ($isRenew ? 'SAA-Membership-Renewal-' : 'SAA-Membership-Application-') . trim(preg_replace('/[^A-Za-z0-9]+/', '-', $ascii), '-') . '.pdf';
   $body .= "--$boundary\r\nContent-Type: application/pdf; name=\"$file\"\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename=\"$file\"\r\n\r\n";
   $body .= chunk_split(base64_encode($pdf)) . "\r\n";
 }

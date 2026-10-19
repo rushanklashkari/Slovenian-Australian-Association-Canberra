@@ -103,6 +103,14 @@
             text(data['seconder' + n + '_badge'], 622, sec[i][1], 154);
           });
 
+          // ── Renewal stamp (blank space under the title)
+          if (data.application_kind === 'Renewal') {
+            var stamp = 'MEMBERSHIP RENEWAL', sz = 16, w = reg.widthOfTextAtSize(stamp, sz);
+            page.drawRectangle({ x: X(413) - w / 2 - 10, y: Y(242) - 7, width: w + 20, height: 26, borderColor: rgb(0.7, 0.1, 0.1), borderWidth: 1.5 });
+            page.drawText(stamp, { x: X(413) - w / 2, y: Y(242), size: sz, font: reg, color: rgb(0.7, 0.1, 0.1) });
+            if (data.member_no) text('Member / Badge No: ' + data.member_no, 340, 266, 200, 9.5);
+          }
+
           // ── Footer note
           page.drawText('Submitted online via slovenianclubcanberra.org.au on ' + new Date().toLocaleString('en-AU'), {
             x: X(52), y: Y(1150), size: 7, font: reg, color: rgb(0.45, 0.45, 0.45)

@@ -2656,7 +2656,7 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               <tr><td>Building fund</td><td>$300.00</td><td>N/A</td></tr>
             </tbody>
           </table>
-          <p class="mem-fees-note">Full membership applications need two seconders who are Life or Full members, and are considered by the committee.</p>
+          <p class="mem-fees-note">Full membership applications need two seconders who are Life or Full members, and are considered by the committee. Renewals pay the annual membership only.</p>
         </div>
         <div class="mem-paper">
           <div style="font-size:30px">📄</div>
@@ -2677,19 +2677,21 @@ body.lang-sl span.nl-lang-en { display: none !important; }
           <div class="mem-form-head">
             <div>
               <div class="mem-form-org">Slovensko avstralsko društvo Canberra · Slovenian Australian Association Canberra, Incorporated</div>
-              <h3>Application for membership</h3>
+              <h3 id="mem-form-title">Application for membership</h3>
             </div>
             <a class="mem-paper-link" href="documents/SAA-Membership-Form-2026.pdf" target="_blank" download>📄 Prefer paper? Download the form</a>
           </div>
           <form id="member-form-el" action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleMembershipSubmit(event)">
             <input type="hidden" name="_subject" value="Membership Application — slovenianclubcanberra.org.au">
             <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-            <p class="mem-intro">To the Secretary — I wish to apply for membership of the Association and supply the following details:</p>
+            <input type="hidden" name="application_kind" id="mem-kind" value="New application">
+            <p class="mem-intro" id="mem-intro">To the Secretary — I wish to apply for membership of the Association and supply the following details:</p>
 
             <div class="mem-section">Type of membership</div>
-            <div class="check-group" style="margin-bottom:8px"><label class="check-item"><input type="radio" name="membership_type" value="Full member ($312: $2 application + $10 annual + $300 building fund)" data-type="full" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Full member</strong><span class="price">$312</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $10 annual + $300 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Associate member ($5: $2 application + $3 annual)" data-type="associate" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Associate member</strong><span class="price">$5</span><br><small style="color:var(--text-muted);font-size:12px">$2 application + $3 annual</small></span></label></div>
+            <div class="check-group" style="margin-bottom:8px"><label class="check-item"><input type="radio" name="membership_type" value="Full member ($312: $2 application + $10 annual + $300 building fund)" data-type="full" id="mem-radio-full" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Full member</strong><span class="price" id="mem-price-full">$312</span><br><small style="color:var(--text-muted);font-size:12px" id="mem-brk-full">$2 application + $10 annual + $300 building fund</small></span></label><label class="check-item"><input type="radio" name="membership_type" value="Associate member ($5: $2 application + $3 annual)" data-type="associate" id="mem-radio-assoc" required onchange="memTypeChanged(this)"><span class="check-label"><strong>Associate member</strong><span class="price" id="mem-price-assoc">$5</span><br><small style="color:var(--text-muted);font-size:12px" id="mem-brk-assoc">$2 application + $3 annual</small></span></label></div>
 
             <div class="mem-section">Your details</div>
+            <div class="form-group" id="mem-badge-row" style="display:none"><label>Member / Badge No</label><input type="text" name="member_no" placeholder="If known"></div>
             <div class="form-row"><div class="form-group"><label>Surname <span class="req">*</span></label><input type="text" name="surname" required></div><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div></div>
             <div class="form-row"><div class="form-group"><label>Other names</label><input type="text" name="other_names"></div><div class="form-group"><label>Title</label><select name="title" onchange="document.getElementById('mem-title-other').style.display=this.value==='Other'?'block':'none'"><option value="">Select…</option><option>Mr.</option><option>Mrs.</option><option>Ms</option><option>Dr</option><option>Other</option></select><input type="text" id="mem-title-other" name="title_other" placeholder="Please specify" style="display:none;margin-top:8px"></div></div>
             <div class="form-row"><div class="form-group"><label>Street <span class="req">*</span></label><input type="text" name="street" required></div><div class="form-group"><label>Suburb</label><input type="text" name="suburb"></div></div>
@@ -2702,6 +2704,7 @@ body.lang-sl span.nl-lang-en { display: none !important; }
             <div class="mem-yn"><span>One or both parents Slovenian</span><label><input type="radio" name="parents_slovenian" value="Yes"> Yes</label><label><input type="radio" name="parents_slovenian" value="No"> No</label></div>
             <div class="mem-yn"><span>One or both grandparents Slovenian</span><label><input type="radio" name="grandparents_slovenian" value="Yes"> Yes</label><label><input type="radio" name="grandparents_slovenian" value="No"> No</label></div>
 
+            <div id="mem-seconders-block">
             <div class="mem-section">Seconders</div>
             <p class="mem-sec-help">Your application must be seconded by two Life or Full members of the Association. Enter their details below — they will be asked to confirm and sign. If you don't know any members yet, leave this blank and the committee will help.</p>
             <div class="mem-seconder">
@@ -2715,11 +2718,13 @@ body.lang-sl span.nl-lang-en { display: none !important; }
                 <div class="form-row-3"><div class="form-group"><label>Name</label><input type="text" name="seconder2_name"></div><div class="form-group"><label>Badge No</label><input type="text" name="seconder2_badge"></div><div class="form-group"><label>Years known</label><input type="number" min="0" name="seconder2_years_known"></div></div>
               </div>
 
+            </div>
+
             <div class="mem-section">Declaration</div>
             <label class="mem-declare"><input type="checkbox" name="declaration" value="Agreed" required> <span>If my application is accepted I agree to abide by the rules of the Association. <span class="req">*</span></span></label>
             <div class="form-row"><div class="form-group"><label>Signed (type your full name) <span class="req">*</span></label><input type="text" name="signed_name" required></div><div class="form-group"><label>Date</label><input type="date" name="date_signed" id="mem-date-signed"></div></div>
 
-            <button type="submit" class="submit-btn">Submit application</button>
+            <button type="submit" class="submit-btn" id="mem-submit-btn">Submit application</button>
             <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
           </form>
           <div id="member-success" style="display:none;margin-top:8px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
@@ -2738,36 +2743,19 @@ body.lang-sl span.nl-lang-en { display: none !important; }
               <p style="font-size:14px;color:#1a4a2e;line-height:1.75;margin-bottom:10px">Thank you for applying. Your application will be considered by the committee, and your seconders will be asked to confirm and sign.</p>
               <p style="font-size:14px;color:#1a4a2e;line-height:1.75"><strong>Please do not make any payment yet.</strong> A member of the committee will be in touch with the next steps and payment details.</p>
             </div>
+            <div id="member-success-renew" style="display:none">
+              <p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:16px">Thank you for renewing. To complete your renewal, please transfer <strong id="mem-renew-amount">$10</strong> (annual membership) to:</p>
+              <div style="background:white;border-radius:8px;padding:16px;font-size:14px">
+                <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:140px;color:var(--blue)">Account name</span><span>Slovenian-Australian Association Canberra Inc</span></div>
+                <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:140px;color:var(--blue)">BSB</span><span>082 902</span></div>
+                <div style="display:flex;gap:12px;padding:8px 0"><span style="font-weight:600;min-width:140px;color:var(--blue)">Account number</span><span>299 762 092</span></div>
+              </div>
+              <p style="font-size:13px;color:#2d6a4f;margin-top:14px">Please use your full name as the payment reference.</p>
+            </div>
             <div id="member-pdf-box" style="display:none;margin-top:18px;padding-top:16px;border-top:1px solid #a3d9b1">
               <p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:12px">Your answers have been filled into the club's official membership form. Download a copy for your records, or print it for your seconders to sign.</p>
               <a id="member-pdf-link" class="mem-paper-btn" href="#" download="SAA-Membership-Application.pdf">⬇ Download my completed form (PDF)</a>
             </div>
-          </div>
-        </div>
-        <div id="form-renew" style="display:none">
-          <div class="form-intro"><strong>Renewal:</strong> Associate members — payment details will appear after submission. Full members — our committee will be in touch.</div>
-          <div style="margin-bottom:18px">
-            <p style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px">Renewal type <span class="req">*</span></p>
-            <div class="check-group">
-              <label class="check-item" onclick="selectRenewalType('associate')"><input type="radio" name="renewal_display_type" value="associate"><span class="check-label"><strong>Associate member</strong><span class="price">$5/year</span></span></label>
-              <label class="check-item" onclick="selectRenewalType('ordinary')"><input type="radio" name="renewal_display_type" value="ordinary"><span class="check-label"><strong>Ordinary / Full member</strong><span class="price">$10/year</span></span></label>
-            </div>
-          </div>
-          <form action="https://formspree.io/f/xgaoydan" method="POST" onsubmit="handleRenewalSubmit(event)">
-        <input type="hidden" name="_next" value="https://slovenianclubcanberra.org.au/#home">
-            <input type="hidden" name="_subject" value="Membership Renewal - Slovenian Club Canberra">
-            <input type="hidden" name="renewal_type" id="renewal_type_hidden" value="">
-            <div class="form-row"><div class="form-group"><label>First name <span class="req">*</span></label><input type="text" name="first_name" required></div><div class="form-group"><label>Last name <span class="req">*</span></label><input type="text" name="last_name" required></div></div>
-            <div class="form-group"><label>Member number</label><input type="text" name="member_no" placeholder="If known"></div>
-            <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
-            <div class="form-group"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
-            <button type="submit" class="submit-btn">Lodge renewal</button>
-          <p class="form-privacy-note"><span class="nl-lang-en">We use your details only to respond to this request. See our <span class="lk" onclick="showPage('privacy')">Privacy Policy</span>.</span><span class="nl-lang-sl">Vaše podatke uporabimo le za odgovor na to zahtevo. Glejte <span class="lk" onclick="showPage('privacy')">Politiko zasebnosti</span>.</span></p>
-</form>
-          <div id="renewal-success" style="display:none;margin-top:24px;background:#e8f5ee;border:1px solid #a3d9b1;border-radius:12px;padding:24px">
-            <div style="font-size:24px;margin-bottom:8px">✅</div>
-            <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#1a4a2e;margin-bottom:10px">Renewal received!</h3>
-            <div id="renewal-payment-details"></div>
           </div>
         </div>
       </div>
@@ -6305,10 +6293,25 @@ window.addEventListener('hashchange', loadFromHash);
 
 // ── TABS & FORMS ─────────────────────────────────────────────────────────
 function switchTab(t) {
-  document.getElementById('form-new').style.display = t === 'new' ? 'block' : 'none';
-  document.getElementById('form-renew').style.display = t === 'renew' ? 'block' : 'none';
-  document.getElementById('tab-new').classList.toggle('active', t === 'new');
-  document.getElementById('tab-renew').classList.toggle('active', t === 'renew');
+  var renew = t === 'renew';
+  document.getElementById('tab-new').classList.toggle('active', !renew);
+  document.getElementById('tab-renew').classList.toggle('active', renew);
+  var form = document.getElementById('member-form-el');
+  form.style.display = 'block';
+  document.getElementById('member-success').style.display = 'none';
+  document.getElementById('mem-kind').value = renew ? 'Renewal' : 'New application';
+  document.getElementById('mem-form-title').textContent = T(renew ? 'Membership renewal' : 'Application for membership');
+  document.getElementById('mem-intro').textContent = T(renew ? 'To the Secretary — I wish to renew my membership of the Association and supply the following details:' : 'To the Secretary — I wish to apply for membership of the Association and supply the following details:');
+  document.getElementById('mem-seconders-block').style.display = renew ? 'none' : '';
+  document.getElementById('mem-badge-row').style.display = renew ? '' : 'none';
+  document.getElementById('mem-submit-btn').textContent = T(renew ? 'Submit renewal' : 'Submit application');
+  var rf = document.getElementById('mem-radio-full'), ra = document.getElementById('mem-radio-assoc');
+  rf.value = renew ? 'Full member — renewal ($10 annual membership)' : 'Full member ($312: $2 application + $10 annual + $300 building fund)';
+  ra.value = renew ? 'Associate member — renewal ($3 annual membership)' : 'Associate member ($5: $2 application + $3 annual)';
+  document.getElementById('mem-price-full').textContent = renew ? '$10' : '$312';
+  document.getElementById('mem-price-assoc').textContent = renew ? '$3' : '$5';
+  document.getElementById('mem-brk-full').textContent = T(renew ? '$10 annual membership' : '$2 application + $10 annual + $300 building fund');
+  document.getElementById('mem-brk-assoc').textContent = T(renew ? '$3 annual membership' : '$2 application + $3 annual');
 }
 
 function memTypeChanged(el) {
@@ -6324,7 +6327,8 @@ function handleMembershipSubmit(e) {
   var picked = form.querySelector('input[name=membership_type]:checked');
   var type = picked ? picked.getAttribute('data-type') : '';
   var subj = form.querySelector('input[name=_subject]');
-  if (subj && picked) subj.value = 'Membership Application (' + picked.value.split(' (')[0] + ') — slovenianclubcanberra.org.au';
+  var isRenew = document.getElementById('mem-kind').value === 'Renewal';
+  if (subj && picked) subj.value = (isRenew ? 'Membership Renewal (' : 'Membership Application (') + picked.value.split(' (')[0].split(' — ')[0] + ') — slovenianclubcanberra.org.au';
   var fd = new FormData(form), data = {};
   fd.forEach(function (v, k) { if (typeof v === 'string') data[k] = v; });
   data.member_type = type;
@@ -6335,8 +6339,10 @@ function handleMembershipSubmit(e) {
   function done() {
     form.style.display = 'none';
     document.getElementById('member-success').style.display = 'block';
-    document.getElementById('member-success-assoc').style.display = type === 'associate' ? 'block' : 'none';
-    document.getElementById('member-success-full').style.display = type === 'associate' ? 'none' : 'block';
+    document.getElementById('member-success-assoc').style.display = !isRenew && type === 'associate' ? 'block' : 'none';
+    document.getElementById('member-success-full').style.display = !isRenew && type !== 'associate' ? 'block' : 'none';
+    document.getElementById('member-success-renew').style.display = isRenew ? 'block' : 'none';
+    document.getElementById('mem-renew-amount').textContent = type === 'associate' ? '$3' : '$10';
     if (pdfBytes) {
       var url = URL.createObjectURL(new Blob([pdfBytes], {type: 'application/pdf'}));
       var link = document.getElementById('member-pdf-link');
@@ -6366,38 +6372,9 @@ function handleMembershipSubmit(e) {
     .then(function () { if (btn) { btn.disabled = false; btn.innerHTML = label; } });
 }
 
-function selectRenewalType(type) {
-  var hidden = document.getElementById('renewal_type_hidden');
-  if (hidden) hidden.value = type === 'associate' ? 'Associate Member - $5/year' : 'Ordinary Member - $10/year';
-}
 
 
 
-function handleRenewalSubmit(e) {
-  e.preventDefault();
-  var form = e.target;
-  var renewType = document.getElementById('renewal_type_hidden').value;
-  if (!renewType) { alert(T('Please select a renewal type first.')); return; }
-  var data = new FormData(form);
-  fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}})
-    .then(function(r) {
-      if (r.ok) {
-        form.style.display = 'none';
-        var successDiv = document.getElementById('renewal-success');
-        var paymentDiv = document.getElementById('renewal-payment-details');
-        successDiv.style.display = 'block';
-        if (renewType.indexOf('Associate') > -1) {
-          paymentDiv.innerHTML = '<p style="font-size:14px;color:#1a4a2e;line-height:1.7;margin-bottom:14px">' + T('To complete your renewal, please transfer <strong>$5</strong> to:') + '</p><div style="background:white;border-radius:8px;padding:16px;font-size:14px"><div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:120px;color:#1d3f6e">' + T('Account name') + '</span><span>Slovenian-Australian Association Canberra Inc</span></div><div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #eee"><span style="font-weight:600;min-width:120px;color:#1d3f6e">BSB</span><span>082 902</span></div><div style="display:flex;gap:12px;padding:8px 0"><span style="font-weight:600;min-width:120px;color:#1d3f6e">' + T('Account number') + '</span><span>299 762 092</span></div></div><p style="font-size:13px;color:#2d6a4f;margin-top:12px">' + T('Please use your full name as the payment reference.') + '</p>';
-        } else {
-          paymentDiv.innerHTML = '<p style="font-size:14px;color:#1a4a2e;line-height:1.75;">' + T('Thank you for renewing your full membership. Our committee will be in touch shortly with payment details and confirmation.') + '</p>';
-        }
-      } else {
-        alert(T('There was an error. Please try again or contact us directly.'));
-      }
-    }).catch(function() {
-      alert(T('There was an error. Please try again or contact us directly.'));
-    });
-}
 
 // ── HERO SLIDESHOW ────────────────────────────────────────────────────────
 var currentSlide = 0;
@@ -7878,6 +7855,15 @@ function _isInsideSLBlock(node) {
 
 // Whole-text translations (exact match only — safe for short words like "Hall")
 var slExact = {
+"Membership renewal": "Podaljšanje članstva",
+"To the Secretary — I wish to renew my membership of the Association and supply the following details:": "Tajnici — želim podaljšati članstvo v društvu in navajam naslednje podatke:",
+"Submit renewal": "Oddaj podaljšanje",
+"$10 annual membership": "10 $ letna članarina",
+"$3 annual membership": "3 $ letna članarina",
+"Member / Badge No": "Članska št. / št. značke",
+"Thank you for renewing. To complete your renewal, please transfer": "Hvala za podaljšanje. Za dokončanje podaljšanja nakažite",
+"(annual membership) to:": "(letna članarina) na:",
+"Full membership applications need two seconders who are Life or Full members, and are considered by the committee. Renewals pay the annual membership only.": "Prijave za redno članstvo morata podpreti dva dosmrtna ali redna člana, o njih pa odloča odbor. Pri podaljšanju se plača le letna članarina.",
 "The Slovenian Buzz Melbourne (Slovenska Čebelica) — 3ZZZ 92.3FM, every Sunday 7:00 AM": "Slovenska Čebelica Melbourne — 3ZZZ 92,3 FM, vsako nedeljo ob 7.00",
 "Preparing your form…": "Pripravljam obrazec …",
 "Sending…": "Pošiljam …",
